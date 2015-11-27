@@ -18,7 +18,7 @@ public abstract class RegisterCheck {
 	 * 
 	 * @param user
 	 *            - 待校验的User实体类
-	 * @return true - 存在该用户名 false - 不存在该用户名
+	 * @return 是否存在该用户
 	 * @throws SQLException
 	 */
 	public static boolean isUserNameExisted(User user) {
@@ -36,6 +36,14 @@ public abstract class RegisterCheck {
 		return flag;
 	}
 
+	/**
+	 * 校验邮箱是否存在
+	 * 
+	 * @param user
+	 *            - 待校验的User实体类
+	 * @return 是否存在该邮箱
+	 * @throws SQLException
+	 */
 	public static boolean isUserEmailExisted(User user) {
 		boolean flag = true;
 
