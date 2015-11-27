@@ -1,0 +1,30 @@
+@media (max-width: 768px) {
+	.head_search .search_form {
+		width: 70vw;
+		height: 50px;
+	}
+	.entrence .container .row .line {height: 2px;}
+}
+@media (min-width: 768px) {
+	.head_search .search_form {width: 50vw;}
+	.hotzone .container .right {
+		margin-top: 13px;
+		margin-right: 2vw;
+	}
+	.foot-left .foot-logo, 
+	.foot-left p {
+		position: relative;
+		display: inline-block;
+		margin-left: 3vw;
+		margin-top: 1.5vh;
+		font-size: 18px;
+		}
+	.foot-left .foot-logo {
+		left:2vw;
+		height: 7.5vh;
+	}
+	.foot-left p {top: 1.3vh;}
+}
+@media (min-width: 1200px) {
+	.head_search .search_form {width: 550px;}
+}

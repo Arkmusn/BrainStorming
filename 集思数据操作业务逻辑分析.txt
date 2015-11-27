@@ -1,0 +1,107 @@
+对数据库的crud操作
+
+
+查找：
+	1.用户登录：查找用户名和密码（从t_user中查找，用户名作为查询条件）
+	2.搜索栏（搜索话题或帖子或人）：从topicType表中搜索typeName,从article表中搜索出articleTitle和userID
+	3.帖子的显示（类型，标题，作者，浏览人数，回答人数，发帖时间）：
+		涉及三张表 type(typeID,typeName),
+				t_user(userID,userName),
+				article(typeID,articleTitle,userID,browseCounter,answerCounter,createTime)
+	4.查找topicType表中的全部话题
+	5.帖子内容（标题，作者，正文，学校，专业，附件，回答，分类）：
+	  （附件：要显示出附件名称，附件上传时间）
+	  （回答：要显示出回答的作者，回答的内容和事件，已经对这个回答赞的个数）
+		涉及张表article（articleTitle,userID,textPath,fileID,typeID）
+			  t_user(userID,userName,schoolID,majorID)
+			  school(schoolID,schoolName)
+			  major(majorID,majorName)
+			  addfile(fileID,filePath,saveTime)
+			  answer(articleID,userID,answerPath,createTime,agreeCounter)
+			  topicType(typeID,typeName)
+	6.我的帖子（显示用户发的帖子,帖子的标题，类型，创建时间）
+		article(articleTitle,typeID,createTime)——>topicType(typeID,typeName)
+	7.私信（从chat中找到一对匹配的收发ID，显示出私信相关内容） =============有待讨论：这个私信开启者以谁为标准（只是他人给用户的私信？还是用户也可以发私信给他人）
+		t_user(userName,userID)——>chat(sendID,receiverID,textPath,chatTime)(此处userID=sendID)
+	8.我的草稿（属于帖子的？还是回答的？）
+	  帖子：	从article中找出draftFlag为1的帖子，显示出帖子的信息
+			article(draftFlag=1,articleTitle,textPath,createTime,typeID)——>topicType(typeID,typeName)
+	  回答：	从answer中找出draftFlag为1的帖子，显示出帖子的信息
+			answer(draftFlag=1,articleID,answerPath,createTime)——>article(articleID,articleTitle)
+	9.我的回答（用户回答其他帖子）
+		先根据用户名到t_user表中找到userID，然后根据ID到answer表中找到用户的回答
+		t_user(userName,userID)——>answer(userID,articleID,answerPath,createTime,agreeCounter)
+	10.获得赞的个数（主要是帖子，回答获得的赞的个数）
+		帖子：根据帖子标题或帖子ID找到赞 article(articleTitle/articleID,agreeCounter)
+		回答：根据 回答ID找到赞answer(answerID,agreeCounter)
+	11.我关注的人（）
+		t_user表中找到用户ID，然后根据此ID到focus表中（userID=focusID）查找用户关注的人的ID，再显示出名字
+		t_user(userName,userID)——>focus(focusID,beFocusID)——>t_user(userID,userName)
+	12.关注我的人（）
+		根据用户名到t_user表中找到用户ID， 再根据userID去focus表中（focusID=userID）找个关注用户的的人的ID，再显示出关注该用户的人的姓名
+		t_user(userName,userID)——>focus(focusID,beFocusID),t_user(userID,userName)
+	13.感兴趣话题（即所属专业类型）
+		从theme中选出用户感兴趣的话题，
+		theme(userID,majorID)——>major(majorID,majorName)	//,t_user(userID,userName)
+	14.我的收藏(显示出收藏的帖子的标题，类型，作者，收藏时间)
+		favorite(articleID,saveTime)——>article(articleID,articleTitle,typeID,userID)——>topicType(typeID,typeName) and t_user(userID,userName)
+	
+	
+	
+	
+添加：
+	1.用户注册：添加 用户名或邮箱，密码
+		（ps:①用户输入用户名或邮箱时，即时监听数据库中是否已经存在，给出提示，从t_user中查找，用户名或邮箱为查询条件
+			②向t_user中添加）
+	2.用户关注话题
+		当用户新关注话题时，向theme表中添加用户关注话题的ID
+	3.写帖子
+		当用户新发表帖子时，向article表添加相关信息
+	4.写回答
+		用户针对某一帖子回答时，想answer表添加数据
+	5.写私信：
+		用户在私信往来中，每一次来往都向chat表添加数据
+	6.我关注的人：
+		用户关注了新感兴趣的人时，要向focus表添加
+	7.添加收藏的帖子
+		用户新收藏感兴趣的帖子时，向favorite表添加
+	8.添加附件
+		有新附件上传时，想addfile表添加
+	
+
+
+	
+	
+修改：
+	1.个人基本信息（用户名，学校，专业，头像，个人简介）
+		对t_user表修改
+	2.浏览次数（有人点击帖子或回答时）
+		article表
+	3.赞的个数（有人点赞时）
+		article，answer表
+	4.回答次数（有人对帖子回答时）
+		article表
+	5.草稿（只要草稿没发表，标记就为0）
+	*********************用户名、密码这些功能有没有？？？？
+
+	
+	
+
+	
+构想:
+	1.由于许多地方要用到用户名和用户ID，所以用户登录后，声明一个全局变量，储存用户 ID和用户名，这样多个地方使用到时，就无需查询，直接使用
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

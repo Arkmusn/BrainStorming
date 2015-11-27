@@ -1,0 +1,21 @@
+package cn.brainstorming.data
+	总分类								分包
+DatabaseConnection	——>		cn.brainstorming.data.dbc
+VO(11个类)			——>		cn.brainstorming.data.vo
+DAO					——>		cn.brainstorming.data.dao
+Impl				——>		cn.brainstorming.data.dao.impl
+Proxy				——>		cn.brainstorming.data.proxy
+Factory				——>		cn.brainstorming.data.factory
+
+
+总分类描述
+1.DatabaseConnection	负责数据库打开和关闭		
+2.VO		与数据表对应，共有11个类
+3.DAO		定义对数据库原子性操作（crud）的接口
+4.Impl		DAO接口的实现类，完成对数据操作具体的业务逻辑
+5.Proxy		代理实现类，负责数据库的打开、关闭、调用数据业务逻辑
+6.Factory	工厂类，取得DAO的实例对象
+
+
+DAO中关键在Impl，先分析出具体的业务逻辑，再逐层抽取，得到模板（作为原子性操作）
+

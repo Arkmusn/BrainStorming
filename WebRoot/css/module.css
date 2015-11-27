@@ -1,0 +1,182 @@
+#index .head {
+	width: 100%;
+	height: 560px;
+	/*z-index: -10;*/
+	background: url(../img/headBG.jpg) center center/cover no-repeat; 
+}
+
+/*头部搜索容器*/
+.head_search {
+	position: absolute;
+	top: 10.9375em;/* 175 ÷ 16 */
+	width: 100vw;
+	font-size: 16px;
+	z-index: 1;
+}
+/*名言栏*/
+.head_search .text_mind {
+	width: 100vw;
+	line-height: 2.59259259em;/* 70 ÷ 27 */
+	text-align: center;
+	color: rgba(250, 250, 250, .75);
+	font-size: 1.6875em;/* 27 ÷ 16 */
+}
+/*搜索栏*/
+.head_search .search_form {
+	margin: 0 auto;
+	margin-top: .625em;/* 10 ÷ 16 */
+	height: 3.4375em;/* 55 ÷ 16 */
+}
+.head_search .search_text {
+	float: left;
+	width: 79%;
+	height: 100%;
+	padding-left: .5em;/* 8 ÷ 16 */
+	border: 1px solid #fff;
+	border-top-left-radius: 2px;
+	border-bottom-left-radius: 2px;
+	cursor: text;
+	font-size: 1.25em; /* 20 ÷ 16 */
+	opacity: .5;
+}
+.head_search .search_text:focus {
+	border-color: rgba(68, 138, 202, .75);
+	box-shadow: 0 0 8px rgba(68, 138, 202, .5);
+	opacity: 1;
+	transition: border .2s linear, box-shadow .5s linear, opacity .1s linear;
+}
+.head_search .search_button {
+	float: left;
+	width: 21%;
+	height: 100%;
+	border-top: 1px solid #448aff;
+	border-bottom: 1px solid #448aff;
+	border-top-right-radius: 2px;
+	border-bottom-right-radius: 2px;
+	color: #fff;
+	background-color: #448aff;
+	font-size: 1.5625em;/* 25 ÷ 16 */
+	opacity: .6;
+}
+.head_search .search_button:hover {
+	transition: opacity .2s linear;
+	opacity: .9;
+}
+/*四大板块*/
+.headline {
+	margin-left: 7vw;
+	margin-bottom: 20px;
+	text-transform: uppercase;
+	color: #bcb7b7;
+}
+.rectangle {
+	height: 215px;/*250px;*/
+	font-size: 16px;
+}
+.rectangle .circle {
+	display: block;
+	margin: 0 auto;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	width: 69px;
+	height: 69px;
+	border-radius: 69px;
+	font-size: 18px;
+	color: #fff;
+}
+.rectangle .intro {
+	display: block;
+	margin-top: 35px;
+	margin-bottom: 20px;
+	font-size: 17px;
+	text-align: center;
+	color: #a7a7a7;
+}
+.rectangle .basic-information {
+	margin-top: 40px;
+	width: 100%;
+	text-align: center;
+}
+.rectangle .basic-information li {
+	display: inline-block;
+	width: 49%;
+}
+.rectangle .basic-information li:first-child a:before, 
+.rectangle .basic-information li:last-child a:before {
+	color: #000;
+	cursor: default;
+}
+.rectangle .basic-information li:first-child a:before {content: "在线：";}
+.rectangle .basic-information li:last-child a:before {content: "帖子：";}
+.entrence .container .row .line {
+	/*margin-top: 20px;*/
+	margin-bottom: 25px;/*30px;*/
+	width: 100%;
+	height: 3px;
+	background: -webkit-linear-gradient(left,white, rgb(184, 183, 183) , white); /* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(left,white, rgb(184, 183, 183) , white); /* Opera 11.1 - 12.0 */
+	background: -moz-linear-gradient(left,white, rgb(184, 183, 183) , white); /* Firefox 3.6 - 15 */
+	background: -ms-linear-gradient(left,white, rgb(184, 183, 183) , white);
+	background: linear-gradient(left,white, rgb(184, 183, 183) , white); 
+}
+/*热门区*/
+.hotzone .container {
+	margin-bottom: 50px;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 5px;
+	border-color: rgb(184, 183, 183);
+}
+.hotzone .left h4, 
+.hotzone .left h5 a {
+	font-weight: bold;
+	color: #000;
+}
+.hotzone .left h5 a {font-size: 12px;}
+.hotzone .left h5 a:hover {font-size: 15px;}
+.hotzone .left h4 {color: #007bee;}
+.hotzone .right a, 
+.hotzone .right p {color: #b2b2b3;}
+.hotzone .container .left, 
+.hotzone .container .right {margin-top: 10px;}
+.hotzone .container .right {
+	text-align: right;
+	padding-top: 5px;
+}
+.hotzone .container .right .glyphicon {
+	margin-left: 10px;
+	color: #27c2f1;
+}
+.hotzone .container .row .line {
+	width: 100%;
+	height: 2px;
+	clear: both;
+	background: -webkit-linear-gradient(left,white, rgb(184, 183, 183) , white); /* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(left,white, rgb(184, 183, 183) , white); /* Opera 11.1 - 12.0 */
+	background: -moz-linear-gradient(left,white, rgb(184, 183, 183) , white); /* Firefox 3.6 - 15 */
+	background: -ms-linear-gradient(left,white, rgb(184, 183, 183) , white);
+	background: linear-gradient(left,white, rgb(184, 183, 183) , white); 
+}
+.hotzone .container form {
+	float: left;
+	padding-top: 40px;
+	width: 96.5%;
+	height: 100px;
+	clear: both;
+}
+.hotzone .container button.select {
+	float: right;
+	margin-right: 5px;
+	width: 30px;
+	height: 30px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #bfbfbf;
+	border-radius: 3px;
+	color: #036dfb;
+	background-color: #fff;
+}
+.hotzone .container button.select:hover {
+	font-weight: bold;
+	background-color: #1d2088;
+}
