@@ -20,7 +20,7 @@ public class JsonObject {
 	}
 
 	/**
-	 * 为json添加键值对
+	 * 为json添加字符串型键值对
 	 * 
 	 * @param key
 	 *            - 键
@@ -28,6 +28,19 @@ public class JsonObject {
 	 *            - 值
 	 */
 	public void add(String key, String value) {
+		String jsonOrder = "\"" + key + "\":\"" + value + "\"";
+		this.list.add(jsonOrder);
+	}
+
+	/**
+	 * 为json添加非字符串型键值对
+	 * 
+	 * @param key
+	 *            - 键
+	 * @param value
+	 *            - 值
+	 */
+	public void add(String key, int value) {
 		String jsonOrder = "\"" + key + "\":" + value;
 		this.list.add(jsonOrder);
 	}

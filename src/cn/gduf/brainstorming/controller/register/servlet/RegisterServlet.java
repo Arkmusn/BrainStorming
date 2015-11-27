@@ -48,10 +48,10 @@ public class RegisterServlet extends HttpServlet {
 			// 检查是否存在该用户名
 			boolean flag = RegisterCheck.isUserNameExisted(userTemp);
 			if (flag == true) {
-				json.add("registerFlag", "1");
+				json.add("registerFlag", 1);
 				strOut = json.toString();
 			} else {
-				json.add("registerFlag", "0");
+				json.add("registerFlag", 0);
 				strOut = json.toString();
 			}
 		}
@@ -63,10 +63,10 @@ public class RegisterServlet extends HttpServlet {
 			// 检查是否存在该邮箱
 			boolean flag = RegisterCheck.isUserEmailExisted(userTemp);
 			if (flag == true) {
-				json.add("emailFlag", "1");
+				json.add("emailFlag", 1);
 				strOut = json.toString();
 			} else {
-				json.add("emailFlag", "0");
+				json.add("emailFlag", 0);
 				strOut = json.toString();
 			}
 		}
@@ -83,10 +83,13 @@ public class RegisterServlet extends HttpServlet {
 			Register register = new Register(userTemp);
 			boolean flag = register.excute();
 			if (flag == true) {
-				json.add("success", "1");
-				json.add("url", PathManager.getLoginSkipURL());
+				json.add("success", 1);
+				json.add("url", PathManager.getLoginSkipURL() + "?username="
+						+ userName);
+				strOut = json.toString();
 			} else {
-				json.add("success", "0");
+				json.add("success", 0);
+				strOut = json.toString();
 			}
 
 		}
