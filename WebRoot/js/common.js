@@ -42,7 +42,6 @@ function BindClickID(targetID) {
 		signNullCheck();
 	}
 
-	// signNullCheck();
 }
 
 
@@ -210,7 +209,7 @@ function signBlurCheck() {
 					}
 				},
 				error: function(jqXHR) {
-					alert(jqXHR.readyState)
+					alert(jqXHR.status)
 				},
 			})
 		}
@@ -290,8 +289,9 @@ function RegisterSend(username, email, password) {
 	var sendToFlag;
 	$.ajax({
 		type: "POST",
-		url: "servlet/RegisterServlet?type=2",
+		url: "servlet/RegisterServlet",
 		data: {
+			"type":2,
 			"username": this.username,
 			"email": this.email,
 			"password": this.password
@@ -299,10 +299,8 @@ function RegisterSend(username, email, password) {
 		dataType: "json",
 		success: function(data) {
 			if (data.success == 1) {
-				url = data.url;
-				location = url;
-			} else {
-				RegisterSend(username, email, password)
+				// alert(data.url)
+				location = data.url;
 			};
 		},
 		error: function(jqXHR) {
