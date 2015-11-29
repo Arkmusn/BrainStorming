@@ -1,9 +1,26 @@
+@media (max-width: 560px) {
+	.entrence .container .row div {width: 100%;}
+	.skip-wrap {width: 90%;}
+	.skip-wrap img {display: none;}
+	.skip-wrap .skip-text {
+		width: 100%;
+		text-align: center;
+	}
+}
 @media (max-width: 768px) {
 	.head_search .search_form {
 		width: 70vw;
 		height: 50px;
 	}
 	.entrence .container .row .line {height: 2px;}
+	.foot-right ul {
+		margin: 0;
+		margin-left: auto;
+		margin-right: auto;
+		padding-top: 2vh;
+		width: 200px;
+	}
+	.foot-right ul li:nth-child(4) {display: none;}
 }
 @media (min-width: 768px) {
 	.head_search .search_form {width: 50vw;}

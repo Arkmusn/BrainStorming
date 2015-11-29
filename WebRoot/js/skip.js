@@ -1,11 +1,9 @@
 $(function() {
-		window.username;
-		window.password;
-		window.homepage = "";
+		window.username=null;
+		window.homepage=null;
 		var logoparam = Readurl();
 		username = logoparam["username"];
-		alert(username)
-		// sendLogonInfo();
+		sendLogonInfo();
 	})
 	/**
 	 *解析url的参数
@@ -26,22 +24,33 @@ function Readurl() {
  *将用户名发回服务器获取密码
  */
 function sendLogonInfo() {
+	var password
 	$.ajax({
 		type: "POST",
-		url: "",
+		url: "servlet/LoginServlet",
 		data: {
+			"type": 0,
 			"username": username
 		},
-		datatype: "json",
+		dataType: "json",
 		success: function(data) {
 			if (data.success == 1) {
-				password = data.password
-			} else {
-				sendLogonInfo();
-			};
+				password=data.password;
+				setcookie(username,password)
+			}
 		},
 		error: function(jqXHR) {
 			alert(jqXHR.status)
 		}
 	})
+}
+
+function setcookie(username,password) {
+	$.cookie("username", username)
+	$.cookie("password", password)
+	goToHomepage()
+}
+
+function goToHomepage() {
+	setTimeout("location='.'", 3000)
 }

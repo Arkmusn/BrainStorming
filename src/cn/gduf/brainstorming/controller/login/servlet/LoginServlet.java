@@ -42,6 +42,7 @@ public class LoginServlet extends HttpServlet {
 
 			// ªÒ»°√‹¬Î
 			String userPassword = LoginCheck.getUserPassword(userTemp);
+			json.add("success", 1);
 			json.add("password", userPassword);
 			strOut = json.toString();
 		}
@@ -80,6 +81,7 @@ public class LoginServlet extends HttpServlet {
 			strOut = json.toString();
 		}
 
+		System.out.println(strOut);
 		PrintWriter out = response.getWriter();
 		out.println(strOut);
 

@@ -1,7 +1,5 @@
 $(function() {
-	var username="liyihang";
-	var password="123";
-	
+	cookieCheck()
 })
 
 /**
@@ -18,4 +16,11 @@ function Readurl() {
 		detalArr[infoArr[0]] = infoArr[1];
 	};
 	return detalArr
+}
+
+function cookieCheck() {
+	var username = $.cookie('username');
+	var password = $.cookie('username');
+	if (username != null && password != null) {};
+
 }

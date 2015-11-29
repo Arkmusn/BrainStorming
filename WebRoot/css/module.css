@@ -64,10 +64,13 @@
 }
 /*四大板块*/
 .headline {
-	margin-left: 7vw;
-	margin-bottom: 20px;
+	margin: 0;
+	margin-top: 25px;
+	margin-bottom: 30px;
+	width: 100%;
 	text-transform: uppercase;
 	color: #bcb7b7;
+	text-align: center;
 }
 .rectangle {
 	height: 215px;/*250px;*/
@@ -92,27 +95,15 @@
 	text-align: center;
 	color: #a7a7a7;
 }
-.rectangle .basic-information {
-	margin-top: 40px;
-	width: 100%;
-	text-align: center;
+.entrence, 
+.hotzone {
+	position: relative;
+	z-index: 1;
 }
-.rectangle .basic-information li {
-	display: inline-block;
-	width: 49%;
-}
-.rectangle .basic-information li:first-child a:before, 
-.rectangle .basic-information li:last-child a:before {
-	color: #000;
-	cursor: default;
-}
-.rectangle .basic-information li:first-child a:before {content: "在线：";}
-.rectangle .basic-information li:last-child a:before {content: "帖子：";}
 .entrence .container .row .line {
-	/*margin-top: 20px;*/
 	margin-bottom: 25px;/*30px;*/
 	width: 100%;
-	height: 3px;
+	height: 2px;
 	background: -webkit-linear-gradient(left,white, rgb(184, 183, 183) , white); /* Safari 5.1 - 6.0 */
 	background: -o-linear-gradient(left,white, rgb(184, 183, 183) , white); /* Opera 11.1 - 12.0 */
 	background: -moz-linear-gradient(left,white, rgb(184, 183, 183) , white); /* Firefox 3.6 - 15 */
@@ -120,14 +111,13 @@
 	background: linear-gradient(left,white, rgb(184, 183, 183) , white); 
 }
 /*热门区*/
+
 .hotzone .container {
-	position: relative;
 	margin-bottom: 50px;
 	border-width: 1px;
 	border-style: solid;
 	border-radius: 5px;
 	border-color: rgb(184, 183, 183);
-	z-index: 1;
 }
 .hotzone .left h4, 
 .hotzone .left h5 a {
@@ -162,52 +152,68 @@
 .hotzone .container form {
 	float: left;
 	padding-top: 40px;
-	width: 96.5%;
+	width: 100%;
 	height: 100px;
 	clear: both;
+	text-align: center;
 }
 .hotzone .container button.select {
-	float: right;
 	margin-right: 5px;
 	width: 30px;
 	height: 30px;
-	border-style: solid;
-	border-width: 1px;
-	border-color: #bfbfbf;
-	border-radius: 3px;
+	border-radius: 80px 30px;
 	color: #036dfb;
-	background-color: #fff;
+	background-color: transparent;
 }
 .hotzone .container button.select:hover {
 	font-weight: bold;
-	background-color: #1d2088;
+	background-color: #7ecef4;
 }
 
-/*
+ /*
  ***
  ***跳转页面
  ***
  */
- body[id="skip"] {
-	width: 100vw;
-	font-size: 20px;
-	background-image: url(../img/43.jpg);
+body[id="skip"] {font-size: 18px;}
+body[id="skip"] .skip-bg {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	background: url(../img/43.jpg) center center/cover no-repeat; 
 }
-body[id="skip"] img {
-	width: 250px;
-}
-body[id="skip"] img, 
-.skip-text{
+.skip-wrap {
+	margin-left: auto;
+	margin-right: auto;
 	margin-top: 6vh;
-	margin-left: 6vw;
+	width: 500px;
+	height: 180px;
+	padding: 10px;
+	border-radius: 10px;
+	background-color: rgba(255, 255, 255, .7);
 }
-.skip-text p {
-	line-height: 30px;
+.skip-wrap img {
+	float: left;
+	margin-top: 10px;
+	margin-left: 3%;
+	width: 140px;
 }
-.skip-text a {
+.skip-wrap .skip-text {
+	float: right;
+	width: 60%;
+	height: 100%;
+	border-color: #000;
+}
+.skip-wrap .skip-text a {
 	color: #fff;
 	text-decoration: none;
 }
-.skip-text a:hover {
-	font-size: 21px;
-}
+.skip-wrap .skip-text a:hover {color: #335BE4;}
+.skip-wrap .skip-text p {line-height: 28px;}
+/*
+ ***
+ ***
+ ***
+ */

@@ -1,9 +1,24 @@
 $(function() {
 	//是否可注册登陆的判断
-	window.LogonFlag = null; //0为不可登陆，1为可登录
-	window.SignFlag = null; //0为不可注册，1为可注册
+	window.LogonFlag = 1; //0为不可登陆，1为可登录
+	window.SignFlag = 1; //0为不可注册，1为可注册
+	window.cookieTime = 0;
 	$(":input").val("");
 	$(":checkbox").attr('checked', false);
+	setClick();
+	$(window).scroll(function() {
+		window.winTop = $(window).scrollTop();
+		navbarFixed();
+	})
+	checkRe_me();
+	signBlurCheck();
+	logonBlurCheck()
+})
+
+/**
+ *click事件框架
+ */
+function setClick() {
 	$(document).click(function(e) {
 		if (e.which == 1) {
 			var target = e.target;
@@ -19,13 +34,12 @@ $(function() {
 			BindClickID(targetID);
 		}
 	})
-	$(window).scroll(function() {
-		window.winTop = $(window).scrollTop();
-		navbarFixed();
-	})
-	signBlurCheck();
-})
+}
 
+
+/**
+ *绑定click事件
+ */
 function BindClickID(targetID) {
 	if (targetID == 'logon')
 		logonshow();
@@ -44,13 +58,17 @@ function BindClickID(targetID) {
 
 }
 
-
+/**
+ *登录层弹出
+ */
 function logonshow() {
 	$('.logon_container').addClass('show');
 	$('.logon_bg').addClass('show');
 	$('.logon_wrap').addClass('show');
 }
-
+/**
+ *转到注册
+ */
 function showSign() {
 	setTimeout(function() {
 		$('.logon_body_row1').hide();
@@ -59,7 +77,9 @@ function showSign() {
 	}, 150);
 	$('.logon_body').addClass('turn')
 }
-
+/**
+ *转到登录
+ */
 function showLogon() {
 	setTimeout(function() {
 		$('.logon_body_row2').hide();
@@ -69,6 +89,9 @@ function showLogon() {
 	$('.logon_body').removeClass('turn')
 }
 
+/**
+ *关闭登录层效果
+ */
 function removeLogon() {
 	$('.logon_container').removeClass('show');
 	$('.logon_bg').removeClass('show');
@@ -80,6 +103,9 @@ function removeLogon() {
 	$(":input").removeClass('wrong_input')
 }
 
+/**
+ *绑定关闭登录层事件
+ */
 function closeLogon(targetClass) {
 	if ($('.logon_container').hasClass('show')) {
 		if (targetClass == 'logon_wrap show' || targetClass == 'logon_container show') {
@@ -88,6 +114,9 @@ function closeLogon(targetClass) {
 	}
 }
 
+/**
+ *导航条变化事件
+ */
 function navbarFixed() {
 	var navbarH = $('.navbar').height();
 	var changeTop = $('.head').height();
@@ -107,14 +136,24 @@ function navbarFixed() {
 	};
 }
 
+/**
+ *登录框空值查询及绑定发送登录信息
+ */
 function logonNullCheck() {
 	var logon = $('#logon_main');
 	var username = logon.find('.username');
 	var password = logon.find('.password')
-	Nullcheck(username)
-	Nullcheck(password)
+	var a = Nullcheck(username)
+	var b = Nullcheck(password)
+	if (LogonFlag == 1 && a == 1 && b == 1) {
+		Logonsend(username, password)
+	} else
+		return;
 }
 
+/**
+ *注册框空值查询及绑定发送注册信息
+ */
 function signNullCheck() {
 	var sign = $('#sign_main');
 	var username = sign.find('.username')
@@ -130,14 +169,18 @@ function signNullCheck() {
 	} else
 		return;
 }
-
+/**
+ *空值查询
+ */
 function Nullcheck(target) {
+	var flag = 0
 	if (target.val() == '') {
 		addwrong(target);
-		SignFlag = 0;
+		flag = 0
 	} else {
-		SignFlag = 1;
+		flag = 1;
 	};
+	return flag
 }
 
 /**
@@ -172,7 +215,7 @@ function cancel_wrong(target) {
  *检查邮箱是否注册(emailExit)
  */
 function signBlurCheck() {
-	SignFlag = 0; //0为不可注册，1为可注册
+	SignFlag = 1; //0为不可注册，1为可注册
 	var sign = $('#sign_main');
 	var username = sign.find('.username');
 	var email = sign.find('.email');
@@ -186,14 +229,16 @@ function signBlurCheck() {
 		if (usernameText.length > 10 || usernameText.length < 2) {
 			addwrong(username)
 			usernameTips2.addClass('show');
+			cancel_Tips(username, usernameTips2)
 			SignFlag = 0;
 		} else {
 			usernameTips2.removeClass('show')
 				//用户名存在校验
 			usernameExit = $.ajax({
 				type: "POST",
-				url: "servlet/RegisterServlet?type=0",
+				url: "servlet/RegisterServlet",
 				data: {
+					"type": 0,
 					"username": usernameText
 				},
 				dataType: "json",
@@ -232,8 +277,9 @@ function signBlurCheck() {
 			emailTips2.removeClass('show')
 			emailExit = $.ajax({
 				type: "POST",
-				url: "servlet/RegisterServlet?type=1",
+				url: "servlet/RegisterServlet",
 				data: {
+					"type": 1,
 					"email": emailText
 				},
 				dataType: "json",
@@ -268,6 +314,9 @@ function cancel_Tips(target, targetTips) {
 	})
 }
 
+/**
+ *检查密码格式
+ */
 function passswrodCheck(password) {
 	var passwordText = password.val();
 	var passwordTips = password.nextAll('.input_tips');
@@ -275,23 +324,25 @@ function passswrodCheck(password) {
 		SignFlag = 0;
 		addwrong(password);
 		passwordTips.addClass('show')
+		cancel_Tips(password, passwordTips)
 	} else {;
 		SignFlag = 1;
 		passwordTips.removeClass('show')
 	}
 }
-
+/**
+ *发送注册信息
+ */
 function RegisterSend(username, email, password) {
 	this.username = username.val();
 	this.email = email.val();
 	this.password = password.val();
 	var url;
-	var sendToFlag;
 	$.ajax({
 		type: "POST",
 		url: "servlet/RegisterServlet",
 		data: {
-			"type":2,
+			"type": 2,
 			"username": this.username,
 			"email": this.email,
 			"password": this.password
@@ -299,12 +350,119 @@ function RegisterSend(username, email, password) {
 		dataType: "json",
 		success: function(data) {
 			if (data.success == 1) {
-				// alert(data.url)
-				location = data.url;
+				url = data.url;
+				location = url;
+			} else {
+				RegisterSend(username, email, password)
 			};
 		},
 		error: function(jqXHR) {
 			alert(jqXHR.status)
 		}
+	})
+}
+
+/**
+ *登录界面
+ *登录用户名失去焦点触发事件
+ */
+function logonBlurCheck() {
+	LogonFlag = 1;
+	var logon = $('#logon_main')
+	var username = logon.find('.username');
+	var usernameTips1 = username.nextAll('.input_tips').eq(0);
+	username.blur(function() {
+		var registerFlag = 0;
+		var usernameText = username.val();
+		if (usernameText.length > 0) {
+			$.ajax({
+				type: "POST",
+				url: "servlet/LoginServlet",
+				data: {
+					"type": 2,
+					"username": usernameText
+				},
+				dataType: "json",
+				success: function(data) {
+					registerFlag = data.registerFlag
+					if (registerFlag == 1) {
+						LogonFlag = 0;
+						usernameTips1.addClass('show');
+						cancel_Tips(username, usernameTips1)
+					} else {
+						LogonFlag = 1;
+						usernameTips1.removeClass('show')
+					};
+				},
+				error: function(jqXHR) {
+					alert(jqXHR.status)
+				}
+			})
+		};
+
+	})
+}
+
+/**
+ *发送登录信息
+ */
+function Logonsend(username, password) {
+	this.username = username.val();
+	this.password = password.val();
+	$.ajax({
+		type: "POST",
+		url: "servlet/LoginServlet",
+		data: {
+			"type": 1,
+			"username": this.username,
+			"password": this.password
+		},
+		dataType: "json",
+		success: function(data) {
+			if (data.success == 1) {
+				setcookie(this.username, this.password);
+			} else {
+				logonsend(username, password);
+			};
+		},
+		error: function(jqXHR) {
+			alert(jqXHR.status)
+		}
+	})
+}
+
+/**
+ *设置登录信息cookie
+ */
+
+function setcookie(username, password) {
+	if (cookieTime > 0) {
+		$.cookie("username", username, {
+			expires: cookieTime
+		});
+		$.cookie("password", password, {
+			expires: cookieTime
+		});
+
+	} else {
+		$.cookie('username', username);
+		$.cookie('password', password);
+	}
+	location = "/";
+}
+
+/**
+ *检查是否勾选记住我
+ *勾选了将cookie过期时间cookieTime设置为7
+ *否则设置为0
+ */
+function checkRe_me() {
+	var a = $('#re_me')
+	a.bind('change', function() {
+		if (a.get(0).checked) {
+			cookieTime = 7
+		} else {
+			cookieTime = 0
+		};
 	})
 }

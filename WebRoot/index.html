@@ -3,7 +3,7 @@
 <head>
  <meta charset="UTF-8">
  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
- <meta name="renderer"content="webkit">
+ <meta name="renderer" content="webkit">
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="shortcut icon" href="logo.ico">
  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
@@ -25,22 +25,22 @@
 				<a class="navbar-brand" href="index.html"></a>
 			</div>
 			<ul class="navbar-right-col">
-				<li id="logoned" class="hide" >
-					<img class="nav-user-img" src="img/userimg.jpg" alt="">
-					<span class="nav-user-name">广东金融学院</span>
+				<li class="hide" id="logoned">
+					<img class="nav-user-img" id="headUserImg" src="img/userimg.jpg" alt="">
+					<span class="nav-user-name" id="headUserName">广东金融学院</span>
 					<div class="user-information-wrap" id="userInformation">
 						<div class="userbar">
 							<div class="userbarleft">
 								<span>
-									<h5><a href="">广东金融学院</a></h4>
+									<h5><a href="" id="userBarUserName">广东金融学院</a></h4>
 									<p>
-										<a class="age left" href="">5</a>
-										<a class="post right" href="">1000</a>
+										<a class="age left" id="userAge" href="">5</a>
+										<a class="post right" id="userPost" href="">1000</a>
 									</p>
 								</span>
-								<span class="school">广东金融学院</span>
-								<span class="major">计算机科学与技术</span>
-								<span class="interest">科技 学术 等等话题</span>
+								<span class="school" id="UserSchool">广东金融学院</span>
+								<span class="major" id="UserMajor">计算机科学与技术</span>
+								<span class="interest" id="UserInterest">科技 学术 等等话题</span>
 							</div>
 							<div class="userbarright">
 								<ul>
@@ -53,7 +53,7 @@
 						</div>
 					</div>
 				</li>
-				<li class="show" id="logon">
+				<li class="" id="logon">
 					<span class="glyphicon glyphicon-user"></span>
 					<span class="nav-login">登录/注册</span>
 				</li>
@@ -63,8 +63,8 @@
 					<div class="search-wrap">
 						<div class="searchbar">
 							<form action="">
-								<input type="text" placeholder="搜索">
-								<button class="searchBtn_hover glyphicon glyphicon-search"></button>
+								<input type="text" id="navSearchText" placeholder="搜索">
+								<button class="searchBtn_hover glyphicon glyphicon-search" id="navSearchButton"></button>
 							</form>
 						</div>
 					</div>					
@@ -89,7 +89,7 @@
 								<span class="input_tips">密码错误！</span>
 								<div>
 									<label class="re_me left">
-										<input type="checkbox">
+										<input type="checkbox" id="re_me">
 										记住我
 									</label>
 									<a href="#" class="right">忘记密码</a>
@@ -103,13 +103,13 @@
 								<li id="sign_btn" class="right">注册</li>
 							</ul>
 							<div id="sign_main" class="logon_main">
-								<input type="text" class="username"  placeholder="用户名" />
+								<input type="text" class="username"  placeholder="用户名  (2-10个字符)" />
 								<span class="input_tips">用户名已被注册！请更换</span>
-								<span class="input_tips">用户名最少6个字符，不超过10个字符</span>
+								<span class="input_tips">用户名最少2个字符，不超过10个字符</span>
 								<input type="text" class="email" placeholder="邮箱" />
 								<span class="input_tips">邮箱已被注册，请更换</span>
 								<span class="input_tips">邮箱格式不正确！</span>
-								<input type="password" class="password" placeholder="密码" autocomplete="off"/>
+								<input type="password" class="password" placeholder="密码  (6-20个字符)" autocomplete="off"/>
 								<span class="input_tips">密码长度最少6位，不超过20位</span>
 								<button id="signsend">注 册</button>
 							</div>
@@ -134,53 +134,21 @@
 		<h3 class="headline">make you choise</h3>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-6 col-md-5 col-md-offset-1 col-lg-3 col-lg-offset-0 rectangle">
+				<div class="col-xs-6 col-sm-6 col-md-5 col-md-offset-1 col-lg-3 col-lg-offset-0 rectangle">
 					<a href=""><button class="circle" style="background-color: #7ecef4">资&nbsp;源<br>分&nbsp;享</button></a>
 					<span class="intro">分享你的资源，选择你的答案，<br>集思广益，才能共同进步</span>
-					<!-- <form action="" class="basic-information">
-							<li class="left">
-							<a class="right" href="" title="在线人数">1000+</a>
-							</li>
-							<li class="right">
-							<a class="left" href="" title="帖子数">1000+</a>
-							</li>
-					</form> -->
 				</div>
-				<div class="col-sm-6 col-md-5 col-lg-3 rectangle">
+				<div class="col-xs-6 col-sm-6 col-md-5 col-lg-3 rectangle">
 					<a href=""><button class="circle" style="background-color: #acd598">问&nbsp;题<br>探&nbsp;讨</button></a>
 					<span class="intro">分享你的资源，选择你的答案，<br>集思广益，才能共同进步</span>
-					<!-- <form action="" class="basic-information">
-							<li class="left">
-							<a class="right" href="" title="在线人数">1000+</a>
-							</li>
-							<li class="right">
-							<a class="left" href="" title="帖子数">1000+</a>
-							</li>
-					</form> -->
 				</div>
-				<div class="col-sm-6 col-md-5 col-md-offset-1 col-lg-3 col-lg-offset-0 rectangle">
+				<div class="col-xs-6 col-sm-6 col-md-5 col-md-offset-1 col-lg-3 col-lg-offset-0 rectangle">
 					<a href=""><button class="circle" style="background-color: #facd89">经&nbsp;验<br>成&nbsp;果</button></a>
 					<span class="intro">分享你的资源，选择你的答案，<br>集思广益，才能共同进步</span>
-					<!-- <form action="" class="basic-information">
-							<li class="left">
-							<a class="right" href="" title="在线人数">1000+</a>
-							</li>
-							<li class="right">
-							<a class="left" href="" title="帖子数">1000+</a>
-							</li>
-					</form> -->
 				</div>
-				<div class="col-sm-6 col-md-5 col-lg-3 rectangle ">
+				<div class="col-xs-6 col-sm-6 col-md-5 col-lg-3 rectangle ">
 					<a href=""><button class="circle" style="background-color: #f19ec2">求&nbsp;助<br>组&nbsp;队</button></a>
 					<span class="intro">分享你的资源，选择你的答案，<br>集思广益，才能共同进步</span>
-					<!-- <form action="" class="basic-information">
-							<li class="left">
-							<a class="right" href="" title="在线人数">1000+</a>
-							</li>
-							<li class="right">
-							<a class="left" href="" title="帖子数">1000+</a>
-							</li>
-					</form> -->
 				</div>
 			</div>
 			<div class="row">
@@ -190,7 +158,7 @@
 	</section>
 	<section class="hotzone">
 		<h3 class="headline">hot zone</h3>
-		<div class="container"><!-- width问题,链接问题 -->
+		<div class="container">
 			<div class="left">
 				<a href="">
 					<h4>运营 QQ 公众号是一种什么体验？受众和微信公众平台区别是什么？</h4>
@@ -302,21 +270,16 @@
 			</div>
 			<div class="row">
 				<form action="">
-					<button class="select">5</button>
-					<button class="select">4</button>
-					<button class="select">3</button>
-					<button class="select">2</button>
 					<button class="select">1</button>
+					<button class="select">2</button>
+					<button class="select">3</button>
+					<button class="select">4</button>
+					<button class="select">5</button>
 				</form>
 			</div>
 		</div>
 	</section>
-	<!-- <img src="img/43.jpg" alt=""> -->
-<script src="js/jquery.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="js/common.js"></script>		
-</body>
-<footer>
+	<footer>
 	<div class="foot-left">
 		<a href=""><img src="img/logowhite.png" alt="" class="foot-logo"></a>
 		<p>大学交流新方式</p>
@@ -334,5 +297,11 @@
 	</div>
 	<div class="foot-line"></div>
 	<span class="copyright">Copyright © 2015 广州天河 粤**********</span>
-</footer>
+	</footer>
+<script src="js/jquery.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/common.js"></script>
+<script src="js/dataTrade.js"></script>
+</body>
 </html>
