@@ -1,6 +1,5 @@
 package cn.gduf.brainstorming.model.userpage.proxy;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import cn.gduf.brainstorming.model.dbc.DatabaseConnection;
