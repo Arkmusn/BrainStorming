@@ -1,4 +1,5 @@
 package cn.gduf.brainstorming.model.factory;
+
 /**
  * @author 集思
  * 工厂类，确定各数据操作接口的实例
@@ -29,111 +30,126 @@ import cn.gduf.brainstorming.model.topic.dao.TopicDAO;
 import cn.gduf.brainstorming.model.topic.proxy.TopicProxy;
 import cn.gduf.brainstorming.model.userpage.dao.ChatDAO;
 import cn.gduf.brainstorming.model.userpage.dao.DraftDAO;
+import cn.gduf.brainstorming.model.userpage.dao.FocusDAO;
 import cn.gduf.brainstorming.model.userpage.dao.UserBasicInfoDAO;
 import cn.gduf.brainstorming.model.userpage.proxy.ChatProxy;
 import cn.gduf.brainstorming.model.userpage.proxy.DraftProxy;
+import cn.gduf.brainstorming.model.userpage.proxy.FocusProxy;
 import cn.gduf.brainstorming.model.userpage.proxy.UserBasicInfoProxy;
 
 public class DAOFactory {
-	
+
 	/**
 	 * 取得发帖接口类实例
+	 * 
 	 * @return
 	 */
-	public static CreatePostDAO getCreatePostDAOInstance(){
+	public static CreatePostDAO getCreatePostDAOInstance() {
 		return new CreatePostProxy();
 	}
-	
+
 	/**
 	 * 取得帖子详细内容接口类实例
+	 * 
 	 * @return
 	 */
-	public static PostTextDAO getPostTextDAOInstance(){
+	public static PostTextDAO getPostTextDAOInstance() {
 		return new PostTextProxy();
 	}
-	
+
 	/**
 	 * 取得回帖接口类实例
+	 * 
 	 * @return
 	 */
-	public static RePostDAO getRePostDAOInstance(){
+	public static RePostDAO getRePostDAOInstance() {
 		return new RePostProxy();
 	}
-	
+
 	/**
 	 * 取得收藏帖子接口类实例
+	 * 
 	 * @return
 	 */
-	public static SavePostDAO getSavePostDAOInstance(){
+	public static SavePostDAO getSavePostDAOInstance() {
 		return new SavePostProxy();
 	}
-	
+
 	/**
 	 * 取得附件接口类实例
+	 * 
 	 * @return
 	 */
-	public static AddFileDAO getAddFileDAOInstance(){
+	public static AddFileDAO getAddFileDAOInstance() {
 		return new AddFileProxy();
 	}
-	
+
 	/**
 	 * 取得赞的个数接口类实例
+	 * 
 	 * @return
 	 */
-	public static AgreeCounterDAO getAgreeCounterDAOInstance(){
+	public static AgreeCounterDAO getAgreeCounterDAOInstance() {
 		return new AgreeCounterProxy();
 	}
-	
+
 	/**
 	 * 取得帖子浏览次数接口类实例
+	 * 
 	 * @return
 	 */
-	public static BrowseCounterDAO getBrowseCounterDAOInstance(){
+	public static BrowseCounterDAO getBrowseCounterDAOInstance() {
 		return new BrowseCounterProxy();
 	}
-	
+
 	/**
 	 * 取得话题接口类实例
+	 * 
 	 * @return
 	 */
-	public static TopicDAO getTopicDAOInstance(){
+	public static TopicDAO getTopicDAOInstance() {
 		return new TopicProxy();
 	}
-	
+
 	/**
 	 * 取得登陆接口类实例
+	 * 
 	 * @return
 	 */
-	public static LoginDAO getLoginDAOInstance(){
+	public static LoginDAO getLoginDAOInstance() {
 		return new LoginProxy();
 	}
-	
+
 	/**
 	 * 取得注册接口类实例
+	 * 
 	 * @return
 	 */
-	public static RegisterDAO getRegisterDAOInstance(){
+	public static RegisterDAO getRegisterDAOInstance() {
 		return new RegisterProxy();
 	}
-	
-	public static SearchPostDAO getSearchPostDAOInstance(){
+
+	public static SearchPostDAO getSearchPostDAOInstance() {
 		return new SearchPostProxy();
 	}
-	
-	public static PostHeadDAO getPostHeadDAOInstance(){
+
+	public static PostHeadDAO getPostHeadDAOInstance() {
 		return new PostHeadProxy();
 	}
-	
-	public static ChatDAO getChatDAOInstance(){
+
+	public static ChatDAO getChatDAOInstance() {
 		return new ChatProxy();
 	}
-	
-	
-	public static DraftDAO getDraftDAOInstance(){
+
+	public static DraftDAO getDraftDAOInstance() {
 		return new DraftProxy();
 	}
-	
-	public static UserBasicInfoDAO getUserBasicInfoDAOInstance(){
+
+	public static FocusDAO getFocusDAOInstance() {
+		return new FocusProxy();
+	}
+
+	public static UserBasicInfoDAO getUserBasicInfoDAOInstance() {
 		return new UserBasicInfoProxy();
 	}
 }
