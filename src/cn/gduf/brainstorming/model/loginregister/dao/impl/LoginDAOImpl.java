@@ -37,7 +37,7 @@ public class LoginDAOImpl implements LoginDAO {
 	public User findByUserID(User user) throws SQLException {
 		User user2 = new User();
 
-		String sql = "select userID,userName,userPassword,userEmail,picturePath "
+		String sql = "select userID,userName,userPassword,userEmail,picturePath,createTime "
 				+ "from t_user where userID=?";
 
 		ps = conn.prepareStatement(sql);
@@ -52,6 +52,7 @@ public class LoginDAOImpl implements LoginDAO {
 			user2.setUserPassword(rs.getString("userPassword"));
 			user2.setUserEmail(rs.getString("userEmail"));
 			user2.setPicturePath(rs.getString("picturePath"));
+			user2.setCreateTime(rs.getDate("createTime"));
 		}
 
 		rs.close();
@@ -70,7 +71,7 @@ public class LoginDAOImpl implements LoginDAO {
 	public User findByName(User user) throws SQLException {
 		User user2 = new User();
 
-		String sql = "select userID,userName,userPassword,userEmail,picturePath from t_user where userName=?";
+		String sql = "select userID,userName,userPassword,userEmail,picturePath,createTime from t_user where userName=?";
 
 		ps = conn.prepareStatement(sql);
 
@@ -84,6 +85,7 @@ public class LoginDAOImpl implements LoginDAO {
 			user2.setUserPassword(rs.getString("userPassword"));
 			user2.setUserEmail(rs.getString("userEmail"));
 			user2.setPicturePath(rs.getString("picturePath"));
+			user2.setCreateTime(rs.getDate("createTime"));
 		}
 
 		rs.close();
@@ -103,7 +105,7 @@ public class LoginDAOImpl implements LoginDAO {
 	public User findByEmail(User user) throws SQLException {
 		User user2 = new User();
 
-		String sql = "select userID,userName,userPassword,userEmail,picturePath"
+		String sql = "select userID,userName,userPassword,userEmail,picturePath,createTime"
 				+ " from t_user where userEmail=?";
 
 		ps = conn.prepareStatement(sql);
@@ -118,6 +120,7 @@ public class LoginDAOImpl implements LoginDAO {
 			user2.setUserPassword(rs.getString("userPassword"));
 			user2.setUserEmail(rs.getString("userEmail"));
 			user2.setPicturePath(rs.getString("picturePath"));
+			user2.setCreateTime(rs.getDate("createTime"));
 		}
 
 		rs.close();

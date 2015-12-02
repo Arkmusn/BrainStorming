@@ -1,4 +1,7 @@
 package cn.gduf.brainstorming.model.vo;
+
+import java.util.Date;
+
 /**
  * 用户表实体类
  * 
@@ -12,8 +15,10 @@ public class User {
 	private String majorID;
 	private String introducePath;
 	private String picturePath;
-	
-	public User(){}
+	private Date createTime;
+
+	public User() {
+	}
 
 	public String getUserID() {
 		return userID;
@@ -78,6 +83,13 @@ public class User {
 	public void setPicturePath(String picturePath) {
 		this.picturePath = picturePath;
 	}
-	
-	
+
+	public final Date getCreateTime() {
+		return createTime;
+	}
+
+	public final void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
 }
