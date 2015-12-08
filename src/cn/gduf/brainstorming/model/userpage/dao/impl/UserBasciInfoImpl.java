@@ -1,4 +1,5 @@
 package cn.gduf.brainstorming.model.userpage.dao.impl;
+
 /**
  * 个人信息接口实现类
  */
@@ -27,7 +28,7 @@ public class UserBasciInfoImpl implements UserBasicInfoDAO {
 		User user = null;
 		School school = null;
 		Major major = null;
-		String sql = "SELECT u.userName, u.picturePath, u.userEmail, u.introducePath, s.schoolName, m.majorName"
+		String sql = "SELECT u.userName, u.picturePath, u.userEmail, u.introducePath, u.createTime, s.schoolName, m.majorName"
 				+ " FROM t_user u, school s, major m"
 				+ " WHERE u.userID = ? AND u.schoolID = s.schoolID AND u.majorID = m.majorID";
 		try {
@@ -43,8 +44,9 @@ public class UserBasciInfoImpl implements UserBasicInfoDAO {
 				user.setPicturePath(rs.getString(2));
 				user.setUserEmail(rs.getString(3));
 				user.setIntroducePath(rs.getString(4));
-				school.setSchoolName(rs.getString(5));
-				major.setMajorName(rs.getString(6));
+				user.setCreateTime(rs.getDate(5));
+				school.setSchoolName(rs.getString(6));
+				major.setMajorName(rs.getString(7));
 				usShMj3.setUser(user);
 				usShMj3.setSchool(school);
 				usShMj3.setMajor(major);
@@ -78,5 +80,21 @@ public class UserBasciInfoImpl implements UserBasicInfoDAO {
 		return flag;
 	}
 
-	
+	@Override
+	public int getCountOfArticles(User user) throws Exception {
+		int counter = 0;
+		String sql = "SELECT COUNT(u.articleID)" + " FROM t_user u, article a"
+				+ " WHERE u.userID = a.userID AND u.userName = ?";
+		try {
+			this.pStmt = this.conn.prepareStatement(sql);
+			ResultSet rs = this.pStmt.executeQuery();
+			while (rs.next()) {
+				counter = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return counter;
+	}
+
 }

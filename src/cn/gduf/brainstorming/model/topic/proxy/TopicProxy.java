@@ -12,6 +12,7 @@ import cn.gduf.brainstorming.model.topic.dao.TopicDAO;
 import cn.gduf.brainstorming.model.topic.dao.impl.TopicDAOImpl;
 import cn.gduf.brainstorming.model.vo.Major;
 import cn.gduf.brainstorming.model.vo.Theme;
+import cn.gduf.brainstorming.model.vo.User;
 
 public class TopicProxy implements TopicDAO {
 
@@ -33,11 +34,11 @@ public class TopicProxy implements TopicDAO {
 	 * @throws SQLException
 	 */
 	@Override
-	public List<Major> showUserLoveTopic(Theme theme) throws SQLException {
+	public List<Major> showUserLoveTopic(User user) throws SQLException {
 		List<Major> list = null;
 
 		try {
-			list=dao.showUserLoveTopic(theme);
+			list=dao.showUserLoveTopic(user);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

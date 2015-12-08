@@ -1,4 +1,5 @@
 package cn.gduf.brainstorming.model.userpage.proxy;
+
 /**
  * 个人信息代理类
  */
@@ -41,6 +42,19 @@ public class UserBasicInfoProxy implements UserBasicInfoDAO {
 			this.dbc.close();
 		}
 		return flag;
+	}
+
+	@Override
+	public int getCountOfArticles(User user) throws Exception {
+		int counter = 0;
+		try {
+			counter = this.dao.getCountOfArticles(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			this.dbc.close();
+		}
+		return counter;
 	}
 
 }
