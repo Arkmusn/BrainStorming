@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONObject;
 import cn.gduf.brainstorming.controller.userinfo.UserInfo;
-import cn.gduf.brainstorming.controller.util.JsonObject;
 import cn.gduf.brainstorming.model.vo.User;
 
 /**
@@ -30,29 +30,28 @@ public class UserInfoServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String userName = request.getParameter("username");
-		JsonObject json = new JsonObject();
-		String strOut = null;
+		JSONObject json = new JSONObject();
 		User user = new User();
 		user.setUserName(userName);
 
 		UserInfo info = new UserInfo(user);
-		
+
 		if (info.getUser() != null && info.getSchool() != null
 				&& info.getMajor() != null) {
-			json.add("success", 1);
-			json.add("username", info.getUser().getUserName());
-			json.add("school", info.getSchool().getSchoolName());
-			json.add("major", info.getMajor().getMajorName());
-			json.add("arti_num", info.getArticleCount());
-			json.add("JoinTime", info.getDays());
+			json.accumulate("success", 1);
+			json.accumulate("username", info.getUser().getUserName());
+			json.accumulate("school", info.getSchool().getSchoolName());
+			json.accumulate("major", info.getMajor().getMajorName());
+			json.accumulate("arti_num", info.getArticleCount());
+			json.accumulate("JoinTime", info.getDays());
 			// unfinished
-			json.add("Usrimg", "");
-			json.add("interest", info.getInterest());
-			
+			json.accumulate("Usrimg", "");
+			json.accumulate("interest", info.getInterest());
+
 		}
 
 		PrintWriter out = response.getWriter();
-		out.println(strOut);
+		out.println(json);
 	}
 
 }
