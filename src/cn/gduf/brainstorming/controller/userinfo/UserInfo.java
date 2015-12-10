@@ -38,6 +38,9 @@ public class UserInfo {
 		this.getTotalDays();
 	}
 
+	/**
+	 * 写入该用户的所有基本信息
+	 */
 	private void getAllInfo() {
 		User userTemp = null;
 		School schoolTemp = null;

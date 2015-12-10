@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONObject;
 import cn.gduf.brainstorming.controller.login.LoginCheck;
-import cn.gduf.brainstorming.controller.util.JsonObject;
 import cn.gduf.brainstorming.model.vo.User;
 
 @SuppressWarnings("serial")
@@ -24,8 +24,7 @@ public class LoginServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String strOut = null;
-		JsonObject json = new JsonObject();
+		JSONObject json = null;
 
 		String type = request.getParameter("type");
 
@@ -33,8 +32,10 @@ public class LoginServlet extends HttpServlet {
 		// 0 - 接受用户名返回密码
 		// 1 - 常规登录验证
 		// 2 - 校验用户名是否存在
+
 		// 接受用户名返回密码
 		if (type.equals("0")) {
+			json = new JSONObject();
 			User userTemp = new User();
 
 			String userName = request.getParameter("username");
@@ -42,12 +43,11 @@ public class LoginServlet extends HttpServlet {
 
 			// 获取密码
 			String userPassword = LoginCheck.getUserPassword(userTemp);
-			json.add("success", 1);
-			json.add("password", userPassword);
-			strOut = json.toString();
+			json.accumulate("password", userPassword);
 		}
 		// 常规登录验证
 		else if (type.equals("1")) {
+			json = new JSONObject();
 			User userTemp = new User();
 
 			String userName = request.getParameter("username");
@@ -58,14 +58,14 @@ public class LoginServlet extends HttpServlet {
 			boolean flag = LoginCheck.isIdentifiedUser(userTemp);
 
 			if (flag == true) {
-				json.add("success", 1);
+				json.accumulate("success", 1);
 			} else {
-				json.add("success", 0);
+				json.accumulate("success", 0);
 			}
-			strOut = json.toString();
 		}
 		// 校验用户名是否存在
 		else if (type.equals("2")) {
+			json = new JSONObject();
 			User userTemp = new User();
 
 			String userName = request.getParameter("username");
@@ -74,16 +74,14 @@ public class LoginServlet extends HttpServlet {
 			boolean flag = LoginCheck.isUserExisted(userTemp);
 
 			if (flag == true) {
-				json.add("registerFlag", 1);
+				json.accumulate("registerFlag", 1);
 			} else {
-				json.add("registerFlag", 0);
+				json.accumulate("registerFlag", 0);
 			}
-			strOut = json.toString();
 		}
 
-		System.out.println(strOut);
 		PrintWriter out = response.getWriter();
-		out.println(strOut);
+		out.println(json);
 
 	}
 }

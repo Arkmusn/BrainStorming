@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONObject;
 import cn.gduf.brainstorming.controller.register.Register;
 import cn.gduf.brainstorming.controller.register.RegisterCheck;
-import cn.gduf.brainstorming.controller.util.JsonObject;
 import cn.gduf.brainstorming.controller.util.PathManager;
 import cn.gduf.brainstorming.model.vo.User;
 
@@ -33,8 +33,7 @@ public class RegisterServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		String type = request.getParameter("type");
-		String strOut = null;
-		JsonObject json = new JsonObject();
+		JSONObject json = null;
 		// type - 验证类型
 		// 0 - 用户名重复性校验
 		// 1 - 邮箱重复性校验
@@ -47,12 +46,11 @@ public class RegisterServlet extends HttpServlet {
 			userTemp.setUserName(userName);
 			// 检查是否存在该用户名
 			boolean flag = RegisterCheck.isUserNameExisted(userTemp);
+			json = new JSONObject();
 			if (flag == true) {
-				json.add("registerFlag", 1);
-				strOut = json.toString();
+				json.accumulate("registerFlag", 1);
 			} else {
-				json.add("registerFlag", 0);
-				strOut = json.toString();
+				json.accumulate("registerFlag", 0);
 			}
 		}
 		// 邮箱重复性校验
@@ -62,12 +60,11 @@ public class RegisterServlet extends HttpServlet {
 			userTemp.setUserEmail(userEmail);
 			// 检查是否存在该邮箱
 			boolean flag = RegisterCheck.isUserEmailExisted(userTemp);
+			json = new JSONObject();
 			if (flag == true) {
-				json.add("emailFlag", 1);
-				strOut = json.toString();
+				json.accumulate("emailFlag", 1);
 			} else {
-				json.add("emailFlag", 0);
-				strOut = json.toString();
+				json.accumulate("emailFlag", 0);
 			}
 		}
 		// 确认注册处理
@@ -82,20 +79,16 @@ public class RegisterServlet extends HttpServlet {
 
 			Register register = new Register(userTemp);
 			boolean flag = register.excute();
+			json = new JSONObject();
 			if (flag == true) {
-				json.add("success", 1);
-				json.add("url", PathManager.getLoginSkipURL() + "?username="
-						+ userName);
-				strOut = json.toString();
+				json.accumulate("success", 1);
+				json.accumulate("url", PathManager.getLoginSkipURL()
+						+ "?username=" + userName);
 			} else {
-				json.add("success", 0);
-				strOut = json.toString();
+				json.accumulate("success", "0");
 			}
-
 		}
-		System.out.println(strOut);
 		PrintWriter out = response.getWriter();
-		out.println(strOut);
+		out.println(json);
 	}
-
 }
