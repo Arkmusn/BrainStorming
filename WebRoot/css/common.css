@@ -160,7 +160,18 @@ a:focus {
 	font-size: 16px;
 	color: white;
 }
-.navbar-right-col .nav-user-name {font-size: 18px;}
+.navbar-right-col .nav-user-name {
+	font-size: 18px;
+	width: 108px;
+	height: 24px;
+	overflow: hidden;
+	vertical-align: top;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    display: inline-block;
+}
+
+
 /*导航栏结束*/
 /*登陆页面*/
 .logon_bg {
@@ -305,106 +316,6 @@ a:focus {
 	margin-bottom: -15px;
 	color: red;
 }
-/*头部搜索容器*/
-.head_search {
-	position: absolute;
-	top: 10.9375em;/* 175 ÷ 16 */
-	width: 100vw;
-	font-size: 16px;
-	z-index: 1;
-}
-/*名言栏*/
-.head_search .text_mind {
-	width: 100vw;
-	line-height: 2.59259259em;/* 70 ÷ 27 */
-	text-align: center;
-	color: rgba(250, 250, 250, .75);
-	font-size: 1.6875em;/* 27 ÷ 16 */
-}
-/*搜索栏*/
-.head_search .search_form {
-	margin: 0 auto;
-	margin-top: .625em;/* 10 ÷ 16 */
-	height: 3.4375em;/* 55 ÷ 16 */
-}
-.head_search .search_text {
-	float: left;
-	width: 79%;
-	height: 100%;
-	padding-left: .5em;/* 8 ÷ 16 */
-	border: 1px solid #fff;
-	border-top-left-radius: 2px;
-	border-bottom-left-radius: 2px;
-	cursor: text;
-	font-size: 1.25em; /* 20 ÷ 16 */
-	opacity: .5;
-}
-.head_search .search_text:focus {
-	border-color: rgba(68, 138, 202, .75);
-	box-shadow: 0 0 8px rgba(68, 138, 202, .5);
-	opacity: 1;
-	transition: border .2s linear, box-shadow .5s linear, opacity .1s linear;
-}
-.head_search .search_button {
-	float: left;
-	width: 21%;
-	height: 100%;
-	border-top: 1px solid #448aff;
-	border-bottom: 1px solid #448aff;
-	border-top-right-radius: 2px;
-	border-bottom-right-radius: 2px;
-	color: #fff;
-	background-color: #448aff;
-	font-size: 1.5625em;/* 25 ÷ 16 */
-	opacity: .6;
-}
-.head_search .search_button:hover {
-	transition: opacity .2s linear;
-	opacity: .9;
-}
-.headline {
-	margin-left: 7vw;
-	text-transform: uppercase;
-	color: #bcb7b7;
-}
-.rectangle {
-	height: 250px;
-	font-size: 16px;
-}
-.rectangle .circle {
-	display: block;
-	margin: 0 auto;
-	margin-top: 10px;
-	margin-bottom: 5px;
-	width: 69px;
-	height: 69px;
-	background-color: #7ecef4;
-	border-radius: 69px;
-	font-size: 18px;
-	color: #fff;
-}
-.rectangle .intro {
-	display: block;
-	margin-top: 35px;
-	margin-bottom: 20px;
-	font-size: 17px;
-	text-align: center;
-	color: #a7a7a7;
-}
-.rectangle .basic-information {
-	margin-top: 40px;
-	width: 100%;
-	text-align: center;
-}
-.rectangle .basic-information li {display: inline-block;}
-.rectangle .basic-information li:first-child a:before {
-	content: "在线：";
-	color: #000;
-}
-.rectangle .basic-information li:last-child a:before {
-	content: "帖子：";
-	color: #000;
-}
 /*页脚*/
 footer {
 	position: relative;
@@ -478,11 +389,21 @@ footer .copyright {
 ***
  */
 /*用户个人信息*/
-.navbar-right-col #logoned {display: none;}
+.navbar-right-col #logoned {
+	display: none;
+
+}
+.navbar-right-col .nav-user-img-con {
+	display: inline-block;
+	margin-right: 7px;
+	width: 25px;
+	height: 25px;
+	border-radius: 25px;
+	background: url(../img/defaultuser.jpg) no-repeat center center/ 25px 25px;
+}
 .navbar-right-col .nav-user-img {
 	position: relative;
 	top: -2px;
-	margin-right: 7px;
 	width: 25px;
 	height: 25px;
 	border-radius: 25px;
@@ -492,7 +413,7 @@ footer .copyright {
 .navbar-right-col .user-information-wrap {
 	position: absolute;
 	top: 55px; 
-	left: -123px;
+	right: 0;
 	width: 300px;
 	height: 210px;
 	border: 1px solid #DDD;

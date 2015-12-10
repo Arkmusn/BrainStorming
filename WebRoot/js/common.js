@@ -1,19 +1,128 @@
 $(function() {
-	//是否可注册登陆的判断
-	window.LogonFlag = 1; //0为不可登陆，1为可登录
-	window.SignFlag = 1; //0为不可注册，1为可注册
-	window.cookieTime = 0;
+	cookieCheck()
+	setHotZone();
+	definedWindow();
 	$(":input").val("");
 	$(":checkbox").attr('checked', false);
 	setClick();
-	$(window).scroll(function() {
-		window.winTop = $(window).scrollTop();
-		navbarFixed();
-	})
+	scrollAction();
 	checkRe_me();
 	signBlurCheck();
 	logonBlurCheck()
 })
+
+/**
+ *定义全局变量
+ */
+function definedWindow() {
+	//是否可注册登陆的判断
+	window.LogonFlag = 1; //0为不可登陆，1为可登录
+	window.SignFlag = 1; //0为不可注册，1为可注册
+	window.cookieTime = 0;
+	window.uRegisterFlag = 0;
+	window.eRegisterFlag = 0;
+}
+
+/**
+ *检查cookie
+ */
+function cookieCheck() {
+	var username = $.cookie('username');
+	var password = $.cookie('username');
+	if (username != undefined) {
+		showUser(1);
+		sendCookie(username)
+	} else {
+		return;
+	};
+}
+
+/*
+ *是否显示登陆后框1为登陆后 0为未登录
+ **/
+function showUser(flag) {
+	var user = $('#logoned');
+	var logon = $('#logon');
+	if (flag) {
+		user.removeClass('hide')
+		user.addClass('show');
+		logon.removeClass('show')
+		logon.addClass('hide')
+	} else {
+		user.removeClass('show');
+		user.addClass('hide');
+		logon.removeClass('hide');
+		logon.addClass('show')
+	};
+}
+
+/**
+ *客户端发送用户名
+ *data为用户信息
+ */
+function sendCookie(username) {
+	$.ajax({
+		type: "POST",
+		url: "servlet/UserInfoServlet",
+		data: {
+			"username": username
+		},
+		dataType: "json",
+		success: function(data) {
+			if (data.success == 1) {
+				showUser(1);
+				setUser(data);
+			} else {
+				sendCookie(username);
+			};
+		},
+		error: function(jqXHR) {
+			alert(jqXHR.status);
+		}
+	})
+}
+
+/**
+ *根据服务器发回的data设置用户信息
+ */
+function setUser(data) {
+	var a = function() { /*<a href="">请点击这里设置</a>*/ }
+	var aTag = a.toString().slice(16, -4)
+	var userBarUserName = $('#userBarUserName');
+	var headUserName = $('#headUserName');
+	var headUserImg = $('#headUserImg');
+	var userAge = $('#userAge');
+	var userPost = $('#userPost');
+	var UserSchool = $('#UserSchool');
+	var UserMajor = $('#UserMajor');
+	var UserInterest = $('#UserInterest');
+	if (UserSchool == 0) {
+		UserSchool.append(aTag)
+	} else if (UserMajor == 0) {
+		UserMajor.append(aTag);
+	} else if (UserInterest == 0) {
+		UserInterest.append(aTag)
+	} else {
+		UserSchool.html(data.school);
+		UserMajor.html(data.major);
+		UserInterest.html(data.interest + "等话题")
+	};
+	headUsName.html(data.username);
+	userBarUserName.html(data.username);
+	headUserImg.attr('src', data.Usrimg);
+	userAge.html(data.JoinTime);
+	userPost.html(data.arti_num);
+}
+
+/**
+ *滚动事件
+ */
+function scrollAction() {
+	$(window).scroll(function() {
+		window.winTop = $(window).scrollTop();
+		navbarFixed();
+	})
+}
 
 /**
  *click事件框架
@@ -54,6 +163,8 @@ function BindClickID(targetID) {
 		logonNullCheck();
 	else if (targetID == 'signsend') {
 		signNullCheck();
+	} else if (targetID == 'quit') {
+		UserQuit();
 	}
 
 }
@@ -66,6 +177,7 @@ function logonshow() {
 	$('.logon_bg').addClass('show');
 	$('.logon_wrap').addClass('show');
 }
+
 /**
  *转到注册
  */
@@ -77,6 +189,7 @@ function showSign() {
 	}, 150);
 	$('.logon_body').addClass('turn')
 }
+
 /**
  *转到登录
  */
@@ -118,12 +231,15 @@ function closeLogon(targetClass) {
  *导航条变化事件
  */
 function navbarFixed() {
+	var body = $('body').attr('id');
 	var navbarH = $('.navbar').height();
 	var changeTop = $('.head').height();
 	if (winTop > changeTop) {
 		$('#searchcon').show();
-		$('.navbar li').addClass('blue');
-		$('.navbar-brand').addClass('blue');
+		if (body == 'index') {
+			$('.navbar li').addClass('blue');
+			$('.navbar-brand').addClass('blue');
+		};
 		$('.navbar').removeClass('navbar_absolute');
 		$('.navbar').addClass('navbar-fixed-top');
 	}
@@ -164,7 +280,7 @@ function signNullCheck() {
 	Nullcheck(password);
 	passswrodCheck(password);
 	//如果可注册就执行注册方法
-	if (SignFlag == 1) {
+	if (SignFlag == 1 && eRegisterFlag == 1 && uRegisterFlag == 1) {
 		RegisterSend(username, email, password);
 	} else
 		return;
@@ -245,10 +361,10 @@ function signBlurCheck() {
 				success: function(data) {
 					registerFlag = data.registerFlag;
 					if (registerFlag == 0) {
-						SignFlag = 1;
+						uRegisterFlag = 1;
 						usernameTips1.removeClass('show')
 					} else {
-						SignFlag = 0;
+						uRegisterFlag = 0;
 						usernameTips1.addClass('show')
 						cancel_Tips(username, usernameTips1);
 					}
@@ -286,10 +402,10 @@ function signBlurCheck() {
 				success: function(data) {
 					registerFlag = data.emailFlag;
 					if (registerFlag == 0) {
-						SignFlag = 1;
+						eRegisterFlag = 1;
 						emailTips1.removeClass('show');
 					} else {
-						SignFlag = 0;
+						eRegisterFlag = 0;
 						emailTips1.addClass('show');
 						cancel_Tips(email, emailTips1);
 					}
@@ -302,6 +418,7 @@ function signBlurCheck() {
 	})
 
 }
+
 /**
  *@parm:cancel Tips
  *		用于绑定目标文本框，键盘输入时取消输入提示
@@ -325,11 +442,12 @@ function passswrodCheck(password) {
 		addwrong(password);
 		passwordTips.addClass('show')
 		cancel_Tips(password, passwordTips)
-	} else {;
+	} else {
 		SignFlag = 1;
 		passwordTips.removeClass('show')
 	}
 }
+
 /**
  *发送注册信息
  */
@@ -448,7 +566,7 @@ function setcookie(username, password) {
 		$.cookie('username', username);
 		$.cookie('password', password);
 	}
-	location = "/";
+	location = ".";
 }
 
 /**
@@ -465,4 +583,35 @@ function checkRe_me() {
 			cookieTime = 0
 		};
 	})
+}
+
+/**
+ *退出登录
+ */
+function UserQuit() {
+	$.cookie('username', '', {
+		expires: -1
+	});
+	$.cookie('password', '', {
+		expires: -1
+	});
+	location.reload()
+}
+
+function setHotZone() {
+	$.ajax({
+		url: '',
+		type: 'POST',
+		dataType: 'json',
+		data: {
+			
+		},
+		success: function(data) {
+
+		},
+		error: function(jqXHR) {
+
+		}
+	})
+
 }

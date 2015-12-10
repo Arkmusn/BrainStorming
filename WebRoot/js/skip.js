@@ -1,13 +1,14 @@
 $(function() {
-		window.username=null;
-		window.homepage=null;
-		var logoparam = Readurl();
-		username = logoparam["username"];
-		sendLogonInfo();
-	})
-	/**
-	 *解析url的参数
-	 */
+	window.username = null;
+	window.homepage = null;
+	var logoparam = Readurl();
+	username = logoparam["username"];
+	sendLogonInfo();
+})
+
+/**
+ *解析url的参数
+ */
 function Readurl() {
 	var urlparam = location.search;
 	urlparam = urlparam.slice(1); //url除去？后的参数
@@ -35,8 +36,10 @@ function sendLogonInfo() {
 		dataType: "json",
 		success: function(data) {
 			if (data.success == 1) {
-				password=data.password;
-				setcookie(username,password)
+				password = data.password;
+				setcookie(username, password)
+			} else {
+				sendLogonInfo()
 			}
 		},
 		error: function(jqXHR) {
@@ -45,7 +48,7 @@ function sendLogonInfo() {
 	})
 }
 
-function setcookie(username,password) {
+function setcookie(username, password) {
 	$.cookie("username", username)
 	$.cookie("password", password)
 	goToHomepage()
