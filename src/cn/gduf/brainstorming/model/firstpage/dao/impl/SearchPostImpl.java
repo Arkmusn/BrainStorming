@@ -1,4 +1,5 @@
 package cn.gduf.brainstorming.model.firstpage.dao.impl;
+
 /**
  * ËÑË÷À¸ËÑË÷Ìû×Ó
  */

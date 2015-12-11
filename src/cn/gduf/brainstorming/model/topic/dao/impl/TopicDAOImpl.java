@@ -41,7 +41,10 @@ public class TopicDAOImpl implements TopicDAO {
 	public List<Major> showUserLoveTopic(User user) throws SQLException {
 		List<Major> list = new ArrayList<Major>();
 
-		String sql = "select majorName from theme,t_user where theme.userID=t_user.userID and userID=? order by theme.majorID desc";
+		String sql = "SELECT m.majorName"
+				+ " FROM major m, theme t,t_user u"
+				+ " WHERE t.majorID = m.majorID AND t.userID = u.userID AND u.userID = ?"
+				+ " ORDER BY t.majorID DESC";
 
 		ps = conn.prepareStatement(sql);
 

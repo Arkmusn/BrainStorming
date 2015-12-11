@@ -1,7 +1,6 @@
 package cn.gduf.brainstorming.controller.login.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONObject;
 import cn.gduf.brainstorming.controller.login.LoginCheck;
+import cn.gduf.brainstorming.controller.util.Interact;
 import cn.gduf.brainstorming.model.vo.User;
 
 @SuppressWarnings("serial")
@@ -80,8 +80,6 @@ public class LoginServlet extends HttpServlet {
 			}
 		}
 
-		PrintWriter out = response.getWriter();
-		out.println(json);
-
+		Interact.outAsJSON(response, json);
 	}
 }

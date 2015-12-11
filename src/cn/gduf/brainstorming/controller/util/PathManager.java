@@ -9,6 +9,7 @@ package cn.gduf.brainstorming.controller.util;
 public abstract class PathManager {
 	// µÇÂ½Ìø×ªÒ³ÃæÂ·¾¶
 	private static String loginSkipURL = "skip.html";
+	private static String articleBaseURL = "p/";
 
 	public PathManager() {
 	}

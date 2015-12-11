@@ -1,7 +1,6 @@
 package cn.gduf.brainstorming.controller.register.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONObject;
 import cn.gduf.brainstorming.controller.register.Register;
 import cn.gduf.brainstorming.controller.register.RegisterCheck;
+import cn.gduf.brainstorming.controller.util.Interact;
 import cn.gduf.brainstorming.controller.util.PathManager;
 import cn.gduf.brainstorming.model.vo.User;
 
@@ -88,7 +88,7 @@ public class RegisterServlet extends HttpServlet {
 				json.accumulate("success", "0");
 			}
 		}
-		PrintWriter out = response.getWriter();
-		out.println(json);
+		
+		Interact.outAsJSON(response, json);
 	}
 }

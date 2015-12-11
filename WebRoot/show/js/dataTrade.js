@@ -2,7 +2,7 @@ $(function() {
 	window.url = null;
 	window.theme = getBodyID();
 	if (theme == 'question') {
-		url = 'sdf';
+		url = './servlet/QuestionServlet';
 		doFour();
 	}
 })
@@ -76,6 +76,7 @@ function sendSet() {
 			"MajorType": MajorType,
 			"order": order
 		},
+		dataType: "json",
 		success: function(data) {
 			if (data.success == 1) {
 				getContent(data);

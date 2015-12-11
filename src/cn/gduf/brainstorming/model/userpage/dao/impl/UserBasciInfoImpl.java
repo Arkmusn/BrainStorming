@@ -83,10 +83,11 @@ public class UserBasciInfoImpl implements UserBasicInfoDAO {
 	@Override
 	public int getCountOfArticles(User user) throws Exception {
 		int counter = 0;
-		String sql = "SELECT COUNT(u.articleID)" + " FROM t_user u, article a"
+		String sql = "SELECT COUNT(a.articleID)" + " FROM t_user u, article a"
 				+ " WHERE u.userID = a.userID AND u.userName = ?";
 		try {
 			this.pStmt = this.conn.prepareStatement(sql);
+			this.pStmt.setString(1, user.getUserName());
 			ResultSet rs = this.pStmt.executeQuery();
 			while (rs.next()) {
 				counter = rs.getInt(1);

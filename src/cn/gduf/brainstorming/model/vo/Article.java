@@ -1,4 +1,7 @@
 package cn.gduf.brainstorming.model.vo;
+
+import java.util.Date;
+
 /**
  * 帖子表实体类
  */
@@ -9,7 +12,7 @@ public class Article {
 	private int typeID;
 	private int browseCounter;
 	private int answerCounter;
-	private String createTime;
+	private Date createTime;
 	private String  textPath;
 	private String fileID;
 	private int draftFlag;
@@ -66,11 +69,11 @@ public class Article {
 		this.answerCounter = answerCounter;
 	}
 
-	public String getCreateTime() {
+	public Date getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(String createTime) {
+	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
 

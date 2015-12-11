@@ -83,7 +83,7 @@ public class DraftImpl implements DraftDAO {
 				article.setArticleURL(rs.getString(2));
 				article.setTextPath(rs.getString(3));
 				topicType.setTypeName(rs.getString(4));
-				article.setCreateTime(rs.getString(5));
+				article.setCreateTime(rs.getDate(5));
 				atTp2.setArticle(article);
 				atTp2.setTopic(topicType);
 				all.add(atTp2);

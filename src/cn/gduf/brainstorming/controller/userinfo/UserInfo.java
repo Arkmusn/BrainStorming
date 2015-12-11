@@ -80,8 +80,9 @@ public class UserInfo {
 		Date date = this.user.getCreateTime();
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
+		// 当前年份
 		for (int start = cal.get(Calendar.YEAR), end = Calendar.getInstance()
-				.get(Calendar.YEAR); start <= end; end++) {
+				.get(Calendar.YEAR); start <= end; start++) {
 			// 非当前年
 			if (start != end) {
 				// 当年日期累加
@@ -91,6 +92,9 @@ public class UserInfo {
 			// 当前年
 			else {
 				this.days += cal.get(Calendar.DAY_OF_YEAR);
+				int todayDayOfYear = Calendar.getInstance().get(
+						Calendar.DAY_OF_YEAR);
+				this.days = todayDayOfYear - this.days;
 			}
 		}
 	}
@@ -111,7 +115,7 @@ public class UserInfo {
 		}
 		// 用户感兴趣列表小于2
 		else {
-			this.interest = this.interest + majorList.get(0).getMajorName();
+			this.interest = majorList.get(0).getMajorName();
 		}
 
 	}

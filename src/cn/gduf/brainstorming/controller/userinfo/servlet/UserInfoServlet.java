@@ -1,7 +1,6 @@
 package cn.gduf.brainstorming.controller.userinfo.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONObject;
 import cn.gduf.brainstorming.controller.userinfo.UserInfo;
+import cn.gduf.brainstorming.controller.util.Interact;
 import cn.gduf.brainstorming.model.vo.User;
 
 /**
@@ -40,8 +40,16 @@ public class UserInfoServlet extends HttpServlet {
 				&& info.getMajor() != null) {
 			json.accumulate("success", 1);
 			json.accumulate("username", info.getUser().getUserName());
-			json.accumulate("school", info.getSchool().getSchoolName());
-			json.accumulate("major", info.getMajor().getMajorName());
+			if (!(info.getSchool().getSchoolName() == null)) {
+				json.accumulate("school", info.getSchool().getSchoolName());
+			} else {
+				json.accumulate("school", "*");
+			}
+			if (!(info.getMajor().getMajorName() == null)) {
+				json.accumulate("major", info.getMajor().getMajorName());
+			} else {
+				json.accumulate("major", "*");
+			}
 			json.accumulate("arti_num", info.getArticleCount());
 			json.accumulate("JoinTime", info.getDays());
 			// unfinished
@@ -50,8 +58,8 @@ public class UserInfoServlet extends HttpServlet {
 
 		}
 
-		PrintWriter out = response.getWriter();
-		out.println(json);
+		Interact.outAsJSON(response, json);
+		System.out.println(json);
 	}
 
 }
