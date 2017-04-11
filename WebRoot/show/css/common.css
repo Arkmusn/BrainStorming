@@ -512,7 +512,7 @@ footer .copyright {
 	cursor: default;
 }
 .user-information-wrap .userbar .userbarleft p a.age:before {content: "思龄："}
-.user-information-wrap .userbar .userbarleft p a.age:after {content: "年 "}
+.user-information-wrap .userbar .userbarleft p a.age:after {content: "日 "}
 .user-information-wrap .userbar .userbarleft p a.post:before {content: "帖子："}
 .user-information-wrap .userbar .userbarleft p a.post:after {content: "帖"}
 .user-information-wrap .userbar .userbarleft .interest,

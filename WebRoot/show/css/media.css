@@ -19,6 +19,11 @@
 	.card-preview {display: none;}
 	.main .container .aside-bar {font-size: 15px;}
 	.main-nav-mine {display: none;}
+	.mtext .btn-sublime .mtext-btn-issue {
+		margin-right: 0;
+		margin-bottom: 10px;
+	}
+	.mtext .btn-sublime .mtext-btn-save {margin-left: 0;}
 }
 @media (max-width: 768px) {
 	.head_search .search_form {
@@ -36,18 +41,15 @@
 	.foot-right ul li:nth-child(4) {display: none;}
 	.recentNews .container .row {width: 100%;}
 	.main .container section {width: 100%;}
-	.main .container aside {
-		display: none;
-		/*margin-bottom: 5%;
-		clear: both;
-		width: 100%;
-		font-size: 17px;
-		text-align: center;
-*/	}
-	/*.aside-circle {display: none;}*/
+	.main .container aside {display: none;}
 	.foot-left p {display: none;}
 	.foot-left .foot-logo {margin-top: 2vh;}
-	
+	.Mtext .Mtext-line {
+		position: static;
+		padding-left: 2%;
+		width: 100%;
+		font-size: 22px;
+	}
 }
 @media (min-width: 768px) {
 	.head_search .search_form {width: 50vw;}
@@ -68,7 +70,9 @@
 		height: 7.5vh;
 	}
 	.foot-left p {top: 1.3vh;}
-	body[id="question"] .navbar {border-radius: 0;}
+	body[id="question"] .navbar, 
+	body[id="issueQuestion"] .navbar,
+	body[id="article"] .navbar {border-radius: 0;}
 	.main .card {height: 120px;}
 	.card-preview {display: none;}
 }

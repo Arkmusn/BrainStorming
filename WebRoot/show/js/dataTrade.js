@@ -85,7 +85,6 @@ function sendSet() {
 			};
 		},
 		error: function(jqXHR) {
-			alert(jqXHR.status);
 		}
 
 	})

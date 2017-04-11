@@ -53,7 +53,7 @@ public class UserInfoServlet extends HttpServlet {
 			json.accumulate("arti_num", info.getArticleCount());
 			json.accumulate("JoinTime", info.getDays());
 			// unfinished
-			json.accumulate("Usrimg", "");
+			json.accumulate("Usrimg", info.getUser().getPicturePath());
 			json.accumulate("interest", info.getInterest());
 
 		}

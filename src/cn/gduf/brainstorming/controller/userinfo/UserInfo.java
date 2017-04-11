@@ -115,7 +115,12 @@ public class UserInfo {
 		}
 		// 用户感兴趣列表小于2
 		else {
-			this.interest = majorList.get(0).getMajorName();
+			if (majorList.size() != 0) {
+				this.interest = majorList.get(0).getMajorName();
+			}
+			else {
+				this.interest = "无";
+			}
 		}
 
 	}

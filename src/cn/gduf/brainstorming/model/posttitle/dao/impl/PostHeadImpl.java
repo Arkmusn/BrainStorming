@@ -35,7 +35,7 @@ public class PostHeadImpl implements PostHeadDAO {
 		User user = null;
 		// 显示URL，类型，标题，作者，浏览人数，回答人数，发帖时间，作者头像
 		// unfinished
-		String sql = "SELECT a.articleURL, a.typeID, a.articleTitle, u.userName, t.typeName, a.browseCounter, a.answerCounter, u.picturePath, a.createTime"
+		String sql = "SELECT a.articleURL, a.typeID, a.articleTitle, u.userName, t.typeName, a.browseCounter, a.answerCounter, u.picturePath, a.createTime, a.preview"
 				+ " FROM article a, t_user u, topicType t"
 				+ " WHERE a.userID = u.userID AND a.typeID = t.typeID AND t.typeID = ?"
 				+ " ORDER BY a.answerCounter DESC";
@@ -57,6 +57,7 @@ public class PostHeadImpl implements PostHeadDAO {
 				article.setAnswerCounter(rs.getInt(7));
 				user.setPicturePath(rs.getString(8));
 				article.setCreateTime(rs.getDate(9));
+				article.setPreview(rs.getString(10));
 				atTpUs3.setArticle(article);
 				atTpUs3.setUser(user);
 				atTpUs3.setTopic(topicType);
@@ -80,7 +81,7 @@ public class PostHeadImpl implements PostHeadDAO {
 		User user = null;
 		// 显示URL，类型，标题，作者，浏览人数，回答人数，发帖时间，作者头像
 		// unfinished
-		String sql = "SELECT a.articleURL, a.typeID, a.articleTitle, u.userName, t.typeName, a.browseCounter, a.answerCounter, u.picturePath, a.createTime"
+		String sql = "SELECT a.articleURL, a.typeID, a.articleTitle, u.userName, t.typeName, a.browseCounter, a.answerCounter, u.picturePath, a.createTime, a.preview"
 				+ " FROM article a, t_user u, topicType t, major m"
 				+ " WHERE a.userID = u.userID AND a.typeID = t.typeID AND t.typeID = ? AND a.majorID = m.majorID AND m.majorName = ?"
 				+ " ORDER BY a.answerCounter DESC";
@@ -103,6 +104,7 @@ public class PostHeadImpl implements PostHeadDAO {
 				article.setAnswerCounter(rs.getInt(7));
 				user.setPicturePath(rs.getString(8));
 				article.setCreateTime(rs.getDate(9));
+				article.setPreview(rs.getString(10));
 				atTpUs3.setArticle(article);
 				atTpUs3.setUser(user);
 				atTpUs3.setTopic(topicType);
@@ -126,7 +128,7 @@ public class PostHeadImpl implements PostHeadDAO {
 		User user = null;
 		// 显示URL，类型，标题，作者，浏览人数，回答人数，发帖时间，作者头像
 		// unfinished
-		String sql = "SELECT a.articleURL, a.typeID, a.articleTitle, u.userName, t.typeName, a.browseCounter, a.answerCounter, u.picturePath, a.createTime"
+		String sql = "SELECT a.articleURL, a.typeID, a.articleTitle, u.userName, t.typeName, a.browseCounter, a.answerCounter, u.picturePath, a.createTime, a.preview"
 				+ " FROM article a, t_user u, topicType t"
 				+ " WHERE a.userID = u.userID AND a.typeID = t.typeID AND t.typeID = ?"
 				+ " ORDER BY a.createTime DESC";
@@ -148,6 +150,7 @@ public class PostHeadImpl implements PostHeadDAO {
 				article.setAnswerCounter(rs.getInt(7));
 				user.setPicturePath(rs.getString(8));
 				article.setCreateTime(rs.getDate(9));
+				article.setPreview(rs.getString(10));
 				atTpUs3.setArticle(article);
 				atTpUs3.setUser(user);
 				atTpUs3.setTopic(topicType);
@@ -171,8 +174,8 @@ public class PostHeadImpl implements PostHeadDAO {
 		User user = null;
 		// 显示URL，类型，标题，作者，浏览人数，回答人数，发帖时间，作者头像
 		// unfinished
-		String sql = "SELECT a.articleURL, a.typeID, a.articleTitle, u.userName, t.typeName, a.browseCounter, a.answerCounter, u.picturePath, a.createTime"
-				+ " FROM article a, t_user u, topicType t"
+		String sql = "SELECT a.articleURL, a.typeID, a.articleTitle, u.userName, t.typeName, a.browseCounter, a.answerCounter, u.picturePath, a.createTime, a.preview"
+				+ " FROM article a, t_user u, topicType t, major m"
 				+ " WHERE a.userID = u.userID AND a.typeID = t.typeID AND t.typeID = ? AND a.majorID = m.majorID AND m.majorName = ?"
 				+ " ORDER BY a.createTime DESC";
 		try {
@@ -194,6 +197,7 @@ public class PostHeadImpl implements PostHeadDAO {
 				article.setAnswerCounter(rs.getInt(7));
 				user.setPicturePath(rs.getString(8));
 				article.setCreateTime(rs.getDate(9));
+				article.setPreview(rs.getString(10));
 				atTpUs3.setArticle(article);
 				atTpUs3.setUser(user);
 				atTpUs3.setTopic(topicType);

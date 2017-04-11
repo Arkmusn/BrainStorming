@@ -43,7 +43,6 @@ function sendLogonInfo() {
 			}
 		},
 		error: function(jqXHR) {
-			alert(jqXHR.status)
 		}
 	})
 }

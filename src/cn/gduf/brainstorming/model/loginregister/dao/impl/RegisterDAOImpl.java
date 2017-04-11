@@ -30,7 +30,7 @@ public class RegisterDAOImpl implements RegisterDAO {
 	public boolean insertUserInfo(User user) throws SQLException {
 		boolean flag = false;
 
-		String sql = "insert into t_user(userID,userName,userPassword,userEmail) values(?,?,?,?)";
+		String sql = "insert into t_user(userID,userName,userPassword,userEmail,schoolID,majorID,picturePath) values(?,?,?,?,\"00000\",\"0000\",\"img/defaultuser.jpg\")";
 
 		ps = conn.prepareStatement(sql);
 

@@ -247,13 +247,19 @@ function navbarFixed() {
 		$('.navbar').removeClass('navbar_absolute');
 		$('.navbar').addClass('navbar-fixed-top');
 	}
-	if (winTop == 0) {
+	if (body == 'index') {
+		if (winTop == 0) {
 		$('#searchcon').hide();
 		$('.navbar li').removeClass('blue');
 		$('.navbar-brand').removeClass('blue');
 		$('.navbar').addClass('navbar_absolute');
 		$('.navbar').removeClass('navbar-fixed-top');
-	};
+		}
+	}
+	else {
+		$('#searchcon').show();
+	}
+	
 }
 
 /**

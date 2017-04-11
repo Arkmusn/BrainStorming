@@ -12,7 +12,7 @@
  <link rel="stylesheet" href="css/media.css">
  <title>question</title>
 </head>
-<body id="question">
+<body id="question" class="question">
 	<nav class="navbar navbar-default navbar_absolute">
 		<div class="container">
 			<div class="navbar-header">
@@ -26,7 +26,7 @@
 			</div>
 			<ul class="navbar-right-col">
 				<li class="hide" id="logoned">
-					<img class="nav-user-img" id="headUserImg" src="img/userimg.jpg" alt="">
+					<img class="nav-user-img" id="headUserImg" src="img/defaultuser.jpg" alt="">
 					<span class="nav-user-name" id="headUserName">广东金融学院</span>
 					<div class="user-information-wrap" id="userInformation">
 						<div class="userbar">
@@ -57,7 +57,7 @@
 					<span class="glyphicon glyphicon-user"></span>
 					<span class="nav-login">登录/注册</span>
 				</li>
-				<li class="" id="searchcon">
+				<li class="" id="searchcon" style="display:list-item;">
 					<span class="glyphicon glyphicon-search"></span>
 					<span class="nav-login ">搜索</span>
 					<div class="search-wrap">
@@ -121,19 +121,19 @@
 		<div class="container">
 			<h3 class="headline">make you choise</h3>
 			<div class="row">
-				<a class="row-entrence entrence-question col-xs-3 sel">问题探讨</a>
-				<a class="row-entrence entrence-team col-xs-3">求助组队</a>
-				<a class="row-entrence entrence-show col-xs-3">成果展示</a>
-				<a class="row-entrence entrence-share col-xs-3">资源分享</a>
+				<a href="resource.html" class="row-entrence entrence-question col-xs-3">资源分享</a>
+				<a href="question.html" class="row-entrence entrence-team col-xs-3 sel2">问题探讨</a>
+				<a href="achievement.html" class="row-entrence entrence-show col-xs-3">经验成果</a>
+				<a href="team.html" class="row-entrence entrence-share col-xs-3">求助组队</a>
 			</div>
 		</div>
 	</div>
 	<div class="recentNews">
 		<div class="container">
 			<div class="row">
-				<span class="glyphicon glyphicon-th-list" style="color: #00b7ee;font-size: 20px;"></span>
+				<span class="glyphicon glyphicon-th-list" style="color: #acd598;font-size: 20px;"></span>
 				<span>最新动态</span>
-				<a class="right recentPost" href="">发帖</a>
+				<a class="right recentPost" href="issuance.html">发帖</a>
 			</div>
 		</div>
 	</div>
@@ -143,10 +143,10 @@
 				<section>
 					<nav>
 						<ul class="main-nav">
-							<li class="nav-li main-nav-all active"><a href="">全部</a></li>
-							<li class="nav-li main-nav-essence"><a href="">精华</a></li>
-							<li class="nav-li main-nav-recommend"><a href="">推荐</a></li>
-							<li class="nav-li main-nav-mine"><a href="">我的帖子</a></li>
+							<li class="nav-li main-nav-all active"><a href="http://www.gduf.org">全部</a></li>
+							<li class="nav-li main-nav-essence"><a href="http://www.gduf.org">精华</a></li>
+							<li class="nav-li main-nav-recommend"><a href="http://www.gduf.org">推荐</a></li>
+							<li class="nav-li main-nav-mine"><a href="http://www.gduf.org">我的帖子</a></li>
 							<li class="nav-li">
 								<div class="dropdown">
 									<button type="button" class="dropdown-toggle" id="dropdown-order" 
@@ -156,10 +156,10 @@
 									</button>
 									<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 										<li role="presentation">
-											<a role="menuitem" tabindex="-1" href="question.html?order=0" class="main-nav-hot">热门帖子</a>
+											<a role="menuitem" tabindex="-1" href="question.html?order=0" class="main-nav-hot">最近发表</a>
 										</li>
 										<li role="presentation">
-											<a role="menuitem" tabindex="-1" href="question.html?order=1" class="main-nav-last">最近发表</a>
+											<a role="menuitem" tabindex="-1" href="question.html?order=1" class="main-nav-last">热门帖子</a>
 										</li>
 								 	</ul>
 								</div>
@@ -167,7 +167,7 @@
 						</ul>
 					</nav>
 					<article>
-
+					
 					</article>
 				</section>
 				<aside class="aside-bar">
@@ -199,7 +199,7 @@
 						<li class="aside-li">
 							<span class="aside-circle"></span>
 							<span class="aside-headline">
-								<a href="">关于集思网开放时间的通知！</a>
+								<a href="http://www.gduf.org">关于集思网开放时间的通知！</a>
 							</span><br>
 							<span class="aside-time">1小时前</span>
 						</li>
@@ -207,7 +207,7 @@
 						<li class="aside-li">
 							<span class="aside-circle"></span>
 							<span class="aside-headline">
-								<a href="">关于集思网开放时间的通知！</a>
+								<a href="http://www.gduf.org">关于集思网开放时间的通知！</a>
 							</span><br>
 							<span class="aside-time">1小时前</span>
 						</li>
@@ -215,7 +215,7 @@
 						<li class="aside-li">
 							<span class="aside-circle"></span>
 							<span class="aside-headline">
-								<a href="">关于集思网开放时间的通知！</a>
+								<a href="http://www.gduf.org">关于集思网开放时间的通知！</a>
 							</span><br>
 							<span class="aside-time">1小时前</span>
 						</li>
@@ -223,7 +223,7 @@
 						<li class="aside-li">
 							<span class="aside-circle"></span>
 							<span class="aside-headline">
-								<a href="">关于集思网开放时间的通知！</a>
+								<a href="http://www.gduf.org">关于集思网开放时间的通知！</a>
 							</span><br>
 							<span class="aside-time">1小时前</span>
 						</li>
@@ -231,7 +231,7 @@
 						<li class="aside-li">
 							<span class="aside-circle"></span>
 							<span class="aside-headline">
-								<a href="">关于集思网开放时间的通知！</a>
+								<a href="http://www.gduf.org">关于集思网开放时间的通知！</a>
 							</span><br>
 							<span class="aside-time">1小时前</span>
 						</li>
@@ -248,17 +248,17 @@
 		</div>
 		<div class="foot-right">
 			<ul>
-				<li><a href="">关于我们</a></li>
+				<li><a href="http://www.gduf.org">关于我们</a></li>
 				<li></li>
-				<li><a href="">联系我们</a></li>
+				<li><a href="http://www.gduf.org">联系我们</a></li>
 				<li></li>
-				<li><a href="">合作申请</a></li>
+				<li><a href="http://www.gduf.org">合作申请</a></li>
 				<li></li>
-				<li><a href="">意见反馈</a></li>
+				<li><a href="http://www.gduf.org">意见反馈</a></li>
 			</ul>
 		</div>
 		<div class="foot-line"></div>
-		<span class="copyright">Copyright © 2015 广州天河 粤**********</span>
+	<span class="copyright">Copyright © 2015 广州天河龙洞 迎福路527号广东金融学院</span>
 	</footer>
 <script src="js/jquery.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>

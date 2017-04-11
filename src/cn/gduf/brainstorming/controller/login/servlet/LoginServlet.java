@@ -43,6 +43,7 @@ public class LoginServlet extends HttpServlet {
 
 			// 获取密码
 			String userPassword = LoginCheck.getUserPassword(userTemp);
+			json.accumulate("success", 1);
 			json.accumulate("password", userPassword);
 		}
 		// 常规登录验证

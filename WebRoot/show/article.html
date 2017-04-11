@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+ <meta name="renderer" content="webkit">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="shortcut icon" href="logo.ico">
+ <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+ <link rel="stylesheet" href="css/common.css">
+ <link rel="stylesheet" href="css/module.css">
+ <link rel="stylesheet" href="css/media.css">
+ <title>正文</title>
+</head>
+<body id="article">
+	<nav class="navbar navbar-default navbar_absolute">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html"></a>
+			</div>
+			<ul class="navbar-right-col">
+				<li class="hide" id="logoned">
+					<img class="nav-user-img" id="headUserImg" src="img/userimg.jpg" alt="">
+					<span class="nav-user-name" id="headUserName">广东金融学院</span>
+					<div class="user-information-wrap" id="userInformation">
+						<div class="userbar">
+							<div class="userbarleft">
+								<span>
+									<h5><a href="http://www.gduf.org" id="userBarUserName">广东金融学院</a></h4>
+									<p>
+										<a class="age left" id="userAge" href="http://www.gduf.org">5</a>
+										<a class="post right" id="userPost" href="http://www.gduf.org">1000</a>
+									</p>
+								</span>
+								<span class="school" id="UserSchool">广东金融学院</span>
+								<span class="major" id="UserMajor">计算机科学与技术</span>
+								<span class="interest" id="UserInterest">科技 学术 等等话题</span>
+							</div>
+							<div class="userbarright">
+								<ul>
+									<li><a href="" id="myIndex">我的主页</a></li>
+									<li><a href="" id="personalVisit">个人设置</a></li>
+									<li><a href="" id="myMessage">我的消息</a></li>
+									<li><a href="" id="quit">退出登录</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="show" id="logon">
+					<span class="glyphicon glyphicon-user"></span>
+					<span class="nav-login">登录/注册</span>
+				</li>
+				<li class="" id="searchcon" style="display: list-item;">
+					<span class="glyphicon glyphicon-search"></span>
+					<span class="nav-login ">搜索</span>
+					<div class="search-wrap">
+						<div class="searchbar">
+							<form action="">
+								<input type="text" id="navSearchText" placeholder="搜索">
+								<button class="searchBtn_hover glyphicon glyphicon-search" id="navSearchButton"></button>
+							</form>
+						</div>
+					</div>					
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="logon_bg"></div>
+	<div class="logon_container">
+		<div class="logon_wrap">
+			<div class="logon_body">
+				<span class="glyphicon glyphicon-remove" id="removeLogon"></span>
+					<div class="logon_body_row1">					
+						<ul class="logon_body_btn">
+							<li id="logon_btn" class="left">登录</li>
+							<li id="sign_btn" class="right">注册<span class="glyphicon glyphicon-arrow-right"></span></li>
+						</ul>
+						<div id="logon_main" class="logon_main">
+							<input type="text" class="username" placeholder="用户名" />
+							<span class="input_tips">用户名不存在！ 请注册</span>
+							<input type="password" class="password" placeholder="密码" autocomplete="off"/>
+							<span class="input_tips">密码错误！</span>
+							<div>
+								<label class="re_me left">
+									<input type="checkbox" id="re_me">
+									记住我
+								</label>
+								<a href="#" class="right">忘记密码</a>
+							</div>
+							<button id="logonsend">登 录</button>
+						</div>
+					</div>
+					<div class="logon_body_row2">
+						<ul class="logon_body_btn">
+							<li id="logon_btn" class="left"><span class="glyphicon glyphicon-arrow-left"></span>登录</li>
+							<li id="sign_btn" class="right">注册</li>
+						</ul>
+						<div id="sign_main" class="logon_main">
+							<input type="text" class="username"  placeholder="用户名  (2-10个字符)" />
+							<span class="input_tips">用户名已被注册！请更换</span>
+							<span class="input_tips">用户名最少2个字符，不超过10个字符</span>
+							<input type="text" class="email" placeholder="邮箱" />
+							<span class="input_tips">邮箱已被注册，请更换</span>
+							<span class="input_tips">邮箱格式不正确！</span>
+							<input type="password" class="password" placeholder="密码  (6-20个字符)" autocomplete="off"/>
+							<span class="input_tips">密码长度最少6位，不超过20位</span>
+							<button id="signsend">注 册</button>
+						</div>
+					</div>
+			</div>
+		</div>
+	</div>
+	<div class="mtext">
+		<div class="container">
+			<div class="row">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+				<a href="question.html">返回</a>
+			</div>
+			<div class="row m-headline">
+				<h1>3D打印人造血管技术获重大突破 可打印仅20微米厚血管</h1>
+			</div>
+			<hr>
+			<div class="row row-color">
+				<span class="glyphicon glyphicon-eye-open">46</span>
+				<span class="row-time">2015.12.12</span>
+				<span class="glyphicon glyphicon-thumbs-up right">54</span>
+				<span class="glyphicon glyphicon-comment right">843</span>
+			</div>
+			<div class="row mtext-article">
+				<p>3D打印人造血管获重大突破
+
+可打印仅20微米厚血管 有望再造几毫米厚皮肤<p>
+
+科技日报柏林9月8日电 （记者顾钢）德国弗朗霍夫激光技术研究所研究人员成功利用3D打印技术制造出人造血管，这一技术突破有望广泛应用在治愈皮肤创伤、人工皮肤再造和人造器官等医学领域。<p>
+
+重大事故受伤、大面积烧伤或肿瘤切除的病人经常需要对创面皮肤进行再造，目前的医疗技术只能对皮肤表层厚度（真皮和表皮）不超过200微米进行人工再造，而对包括皮下组织的几毫米厚完整皮肤系统还不能进行再造，因为涉及到血管组织，没有血管的养分供应，超过200微米的人造皮肤就没法存活。为此，弗朗霍夫激光技术研究所牵头的跨学科团队承担了欧盟项目“ArtiVasc 3D”，开发出3D打印技术制造人造血管。<p>
+
+3D打印制造血管的关键是要找到合适的打印材料，其适合作为移植血管的物理特性和生物相容性，必须与内皮和毛细血管周围细胞组织相容，以及适合于3D打印的可加工特性。为了符合这些条件，研究人员采用了喷墨打印与立体光刻相结合的方法。利用这一组合方法，他们解决了打印只有20微米厚的多孔、多分叉人造血管的关键技术。<p>
+
+人造血管多分叉结构借助于计算机的模拟设计，完全按照真实的血管结构打印。打印血管所用的材料是丙烯酸酯基的合成聚合物。这种材料可以使血管表面分布许多直径数百微米的微孔。利用这种材料，研究人员首次成功地打印出了与真实血管功能类似的人造血管。<p>
+
+这项技术为大面积烧伤等皮肤严重损伤的病人，以及因手术创伤需进行皮肤再造或血管再造的病人带来了福音。研究人员表示，这项技术不仅限于打印人造血管，还可以作为一个工具箱，以选择不同的材料、几何体和大小，用于制造多种人体组织或人体器官，未来在医学上的应用前景非常广阔。<p>
+
+总编辑圈点<p>
+
+3D打印刚火起来，大家就想到打印人体器官了，而打印血管是万里长征第一关。去年已有两个小组宣布成功打印血管了。随着各路人马开发合适材料，移植人造血管和皮肤已是不远的事。一旦实现，烧伤和手术创伤修复，将不再考虑供源和排异反应，那会是21世纪外科医术的精彩呈现。
+				</p>
+			</div>
+			<div class="row">
+				<button class="row-get">
+					<a href="javascript:;">
+						<span class="glyphicon glyphicon-star-empty"></span>
+						收藏
+					</a>
+				</button>
+				<button class="row-zan">
+					<a href="javascript:;">
+						<span class="glyphicon glyphicon-thumbs-up"></span>
+						赞
+					</a>
+				</button>
+				
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div class="foot-left">
+			<a href=""><img src="img/logowhite.png" alt="" class="foot-logo"></a>
+			<p>大学交流新方式</p>
+		</div>
+		<div class="foot-right">
+			<ul>
+				<li><a href="http://www.gduf.org">关于我们</a></li>
+				<li></li>
+				<li><a href="http://www.gduf.org">联系我们</a></li>
+				<li></li>
+				<li><a href="http://www.gduf.org">合作申请</a></li>
+				<li></li>
+				<li><a href="http://www.gduf.org">意见反馈</a></li>
+			</ul>
+		</div>
+		<div class="foot-line"></div>
+	<span class="copyright">Copyright © 2015 广州天河龙洞 迎福路527号广东金融学院</span>
+	</footer>
+<script src="js/jquery.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/common.js"></script>
+<script src="js/dataTrade.js"></script>
+</body>
+</html>

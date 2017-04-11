@@ -229,7 +229,10 @@ body[id="skip"] .skip-bg {
  */
 body[id="question"] {background-color: #fff;}
 body[id="question"] .navbar {background-color: #00b7ee;}
-body[id="question"] a:hover {color: #00B7EE;}
+body[class="resource"] a:hover {color: #00B7EE;}
+body[class="question"] a:hover {color: #acd598;}
+body[class="achievement"] a:hover {color: #facd89;}
+body[class="team"] a:hover {color: #eb6877;}
 .select-entrence, 
 .recentNews, 
 .main {
@@ -259,15 +262,21 @@ body[id="question"] a:hover {color: #00B7EE;}
 }
 .select-entrence .row a:nth-child(2) {background-color: #acd598;}
 .select-entrence .row a:nth-child(3) {background-color: #facd89;}
-.select-entrence .row a.sel::before {
+.select-entrence .row a.sel1::before,
+.select-entrence .row a.sel2::before,
+.select-entrence .row a.sel3::before,
+.select-entrence .row a.sel4::before {
 	position: absolute;
 	top: 2em;
 	left: 45%;
 	border-style: solid;
 	border-width: 10px;
-	border-color: #00b7ee transparent transparent;
 	content: "";
 }
+.select-entrence .row a.sel1::before {border-color: #00b7ee transparent transparent;}
+.select-entrence .row a.sel2::before {border-color: #acd598 transparent transparent;}
+.select-entrence .row a.sel3::before {border-color: #facd89 transparent transparent;}
+.select-entrence .row a.sel4::before {border-color: #eb6877 transparent transparent;}
 .recentNews .container {
 	margin-top: 2.5vh;
 	margin-bottom: 2vh;
@@ -279,7 +288,6 @@ body[id="question"] a:hover {color: #00B7EE;}
 .recentNews .container .row span:nth-child(2), 
 .recentNews .container .row a {font-size: 1.5em;}
 .recentNews .container .row a {color: #000;}
-/*.recentNews .container .row a:hover {color: #00b7ee;}*/
 .main .container section {
 	float: left;
 	width: 70%;
@@ -306,14 +314,33 @@ body[id="question"] a:hover {color: #00B7EE;}
 	text-align: center;
 }
 .main section nav .dropdown-toggle:hover, 
-.main .main-nav .nav-li a:hover {color: #00b7ee;}
+
+body[class="resource"] .main .main-nav .nav-li a:hover {color: #00b7ee;}
+body[class="question"] .main .main-nav .nav-li a:hover {color: #acd598;}
+body[class="achievement"] .main .main-nav .nav-li a:hover {color: #facd89;}
+body[class="team"] .main .main-nav .nav-li a:hover {color: #eb6877;}
+
 .main .main-nav .nav-li a {color: #000;}
-.main .main-nav .nav-li.active {background-color: #00b7ee;}
-.main .main-nav .nav-li.active a:hover {color: #000;}
+
+body[class="resource"] .main .main-nav .nav-li.active {background-color: #00B7EE;}
+body[class="resource"] .main .main-nav .nav-li.active a:hover {color: #000;}
+body[class="question"] .main .main-nav .nav-li.active {background-color: #acd598;}
+body[class="question"] .main .main-nav .nav-li.active a:hover {color: #000;}
+body[class="achievement"] .main .main-nav .nav-li.active {background-color: #facd89;}
+body[class="achievement"] .main .main-nav .nav-li.active a:hover {color: #000;}
+body[class="team"] .main .main-nav .nav-li.active {background-color: #eb6877;}
+body[class="team"] .main .main-nav .nav-li.active a:hover {color: #000;}
 .main .main-nav .nav-li:last-child {float: right;}
 .main section nav .dropdown-toggle {background-color: transparent;}
 .main section nav .dropdown-menu {min-width: 70px;}
 .main section nav .dropdown-menu a {font-size: 15px;}
+
+
+.main section nav .dropdown-toggle:hover {color: #acd598;}
+body[class="resource"] .main section nav .dropdown-toggle:hover {color: #00b7ee;}
+body[class="question"] .main section nav .dropdown-toggle:hover {color: #acd598;}
+body[class="achievement"] .main section nav .dropdown-toggle:hover {color: #facd89;}
+body[class="team"] .main section nav .dropdown-toggle:hover {color: #eb6877;}
 /*帖子卡片*/
 .main .card {
 	margin-top: 25px;
@@ -414,8 +441,11 @@ body[id="question"] a:hover {color: #00B7EE;}
 	width: 20px;
 	height: 20px;
 	border-radius: 20px;
-	background-color: #00B7EE;
 }
+body[class="resource"] .aside-circle {background-color: #00b7ee;}
+body[class="question"] .aside-circle {background-color: #acd598;}
+body[class="achievement"] .aside-circle {background-color: #facd89;}
+body[class="team"] .aside-circle {background-color: #eb6877;}
 .aside-headline, 
 .aside-time {margin-left: 15%;}
 .aside-headline {
@@ -449,11 +479,16 @@ body[id="question"] a:hover {color: #00B7EE;}
 	margin-right: 5%;
 	color: #000;
 }
-.aside-bar .classif li a:hover {color: #00B7EE;}
-.classif li a.active {
-	background-color: #00B7EE;
-	border-radius: 10px 3px;
-}
+.classif li a.active {border-radius: 10px 3px;}
+body[class="resource"] .aside-bar .classif li a:hover {color: #00b7ee;}
+body[class="resource"] .classif li a.active {background-color: #00b7ee;}
+body[class="question"] .aside-bar .classif li a:hover {color: #acd598;}
+body[class="question"] .classif li a.active {background-color: #acd598;}
+body[class="achievement"] .aside-bar .classif li a:hover {color: #facd89;}
+body[class="achievement"] .classif li a.active {background-color: #facd89;}
+body[class="team"] .aside-bar .classif li a:hover {color: #eb6877;}
+body[class="team"] .classif li a.active {background-color: #eb6877;}
+
 .classif li a.active:hover {color: #000;}
 /*
  ***
@@ -465,4 +500,151 @@ body[id="question"] a:hover {color: #00B7EE;}
 
 
 
+/*
+ ***
+ ***问题探讨发表文章
+ ***
+*/
+body[id="issueQuestion"] {font-size: 16px;}
+body[id="issueQuestion"] .navbar {background-color: #00b7ee;}
+body[id="issueQuestion"] a:hover {color: #00B7EE;}
+.mtext {
+	position: relative;
+	z-index: 1;
+}
+.mtext .container {
+	margin-top: 100px;
+	margin-bottom: 50px;
+	border-radius: 5px;
+	box-shadow: 2px 2px 3px #A09E9E, -2px -2px 3px #A09E9E;
+}
+.mtext .container div.row:first-child {
+	padding-top: 2%;
+	padding-bottom: 2%;
+	padding-left: 2%;
+	color: #71777F;
+}
+.mtext div.row:first-child a {color: #71777f;}
+.mtext div.row:first-child span:last-child {font-size: 15px;}
+.mtext div.row:first-child span:last-child,
+.mtext div.row:first-child a:hover  {
+	cursor: pointer;
+	color: #00b7ee;
+}
+.mtext .row:nth-child(2) {position: relative;}
+.mtext .dropdown button.dropdown-toggle {
+	margin-top: 10px;
+	margin-left: 2%;
+	background-color: #fff;
+	font-size: 18px;
+}
+.mtext .mtext-line {
+	position: absolute;
+	top: 5px;
+	left: 17%;
+	width: 83%;
+	font-size: 23px;
+}
+.mtext hr {
+	position: relative;
+	top: -10px;
+}
+.mtext .container .mtext-textarea {
+	height: 75%;
+	padding: 10px;
+}
+.mtext textarea {
+	width: 100%;
+	height: 500px;
+	padding: 10px;
+	border: 1px solid;
+	border-radius: 5px;
+	border-color: #A7A7A9;
+	resize: none;
+}
+.mtext div.btn-sublime {
+	padding: 20px;
+	text-align: center;
+}
+.mtext div.btn-sublime button {
+	width: 160px;
+	height: 50px;
+	font-size: 20px;
+	border-radius: 50px;
+}
+.mtext .btn-sublime .mtext-btn-issue {
+	background-color: #00b7ee;
+	margin-right: 5%;
+	color: #fff;
+}
+.mtext .btn-sublime .mtext-btn-save {
+	margin-left: 5%;
+	color: #71777f;
+}
+/*
+ ***
+ ***
+ ***
+*/
 
+
+
+/*
+ ***
+ ***文章
+ ***
+*/
+body[id="article"] {font-size: 16px;}
+body[id="article"] .navbar {background-color: #00b7ee;}
+body[id="article"] a:hover {}
+
+.mtext .m-headline {
+	text-align: center;
+}
+.glyphicon-eye-open {
+	margin-left: 5%;
+	margin-right: 1%;
+}
+.row-color {
+	font-size: 19px;
+	color: #9A9B9C;
+}
+.glyphicon-thumbs-up {
+	margin-right: 5%;
+}
+.glyphicon-comment {
+	margin-right: 1%;
+}
+.mtext-article {
+	padding-top: 20px;
+	padding-left: 2%;
+	padding-right: 2%;
+	word-wrap: break-word;
+	text-indent: 25px;
+}
+.row-zan,
+.row-get {
+	float: right;
+	width: 100px;
+	height: 40px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	background-color: #fff;
+	border-style: solid;
+	border-color: #000;
+	border-width: 1px;
+	border-radius: 40px;
+}
+.row-zan a,
+.row-get a {color: #000;}
+.row-get {margin-right: 5%;}
+.row-zan {margin-right: 2%;}
+.row-get a:hover {color: #FFEB44;}
+.row-zan a:hover {color: #57ADFD;}
+.row-get a:visited {color: #FFEB44;}
+.row-zan a:visited {color: #57ADFD;}
+/*
+ ***
+ ***
+ ***
+*/

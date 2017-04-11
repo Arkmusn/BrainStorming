@@ -52,6 +52,11 @@ public class QuestionServlet extends HttpServlet {
 		// ÓÐÏÞÖÆ
 		else {
 			question = new Question(Integer.parseInt(orderType), themeType);
+			
+			json = new JSONObject();
+			json.accumulate("success", 1);
+			arrJson = JSONArray.fromObject(question.getListArticle());
+			json.put("article", arrJson);
 		}
 		
 		Interact.outAsJSON(response, json);
